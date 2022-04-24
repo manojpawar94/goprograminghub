@@ -1,0 +1,124 @@
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css");
+
+html,
+body {
+    padding: 0;
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
+        Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue,
+        sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+code {
+    font-family: 'Courier New' !important;
+    font-size: 1rem !important;
+}
+
+.bi {
+    font-size: 32px !important;
+    color: #0d6efd !important;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.navbar-brand,
+.nav-link {
+    color: #0d6efd !important
+}
+
+.author-container {
+    align-items: center;
+    display: flex;
+    margin-bottom: 0.5rem;
+}
+
+.author-container .author {
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-bottom: 0;
+    margin-left: 0.5rem;
+}
+
+.author time {
+    color: rgba(75, 85, 99);
+    display: block;
+    font-size: 0.75rem;
+}
+
+.author strong {
+    color: rgba(75, 85, 99);
+    font-size: 0.75rem;
+    font-weight: medium;
+    margin-bottom: 0.125rem;
+}
+
+.text-justify {
+    text-align: justify;
+    text-justify: inter-word;
+}
+
+ul.recent-article {
+    list-style-type: none !important;
+    padding-left: 1rem !important;
+    width: 100% !important;
+    margin: 0 !important;
+}
+
+ul.recent-article li {
+    cursor: pointer !important;
+    padding-top: 0.7rem !important;
+    padding-bottom: 0.7rem !important;
+    border-bottom: 1px #ccc dashed !important;
+}
+
+ul.recent-article li:last-child {
+    border-bottom: none !important;
+}
+
+ul.recent-article li:hover {
+    color: #0d6efd !important;
+}
+
+.navbar:hover {
+    box-shadow: 0 0.5rem 1rem rgb(0 0 0 / 15%) !important;
+}
+
+.card {
+    border-radius: 1rem !important;
+}
+
+.card:hover {
+    box-shadow: 0 0.5rem 1rem rgb(0 0 0 / 15%) !important;
+}
+
+.social-media-icon:hover {
+    box-shadow: 0 1rem 3rem rgba(0, 0, 0, .175) !important;
+}
+
+.text-truncate-container {
+    width: 100%;
+}
+
+.text-truncate-container .text-truncate-2 {
+    -webkit-line-clamp: 2;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.text-truncate-container .text-truncate-3 {
+    -webkit-line-clamp: 3;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
