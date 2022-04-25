@@ -2,7 +2,7 @@
 title: "Introduction to Python Language"
 excerpt: "Python is an easy to learn, powerful, object-oriented, high-level programming language. It is created by Guido van Rossum in 1991 and further developed by the Python Software Foundation."
 createdAt: "2021-05-03"
-author: manoj-pawar
+author: "manoj-pawar"
 ---
 
 Python is an easy-to-learn, powerful, object-oriented, high-level programming language. Guido van Rossum has created the Python in 1991 and was further developed by the Python Software Foundation. It is a general-purpose programming language used in various fields like,
