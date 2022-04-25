@@ -1,13 +1,13 @@
 ---
-title: "How to execute SQL queries (Select, Update, Insert, Delete) effectively using Python"
-excerpt: "Connecting to the database is the most common need of any application. Most of the time developers end up writing the repeated code for each CRUD operation. But it is not an efficient way. Let me explain the below approach to handle the maintainability and reusability of the code."
+title: "How to execute SQL queries (Select, Update, Insert, Delete) effectively using Python?"
+excerpt: "The database is an integral part of most software applications. We always try to find out what is the best way to connect to the database. Often use readily available frameworks. The one thing I have experienced often frameworks or libraries provide a lot of abstractions to make it easy for end developers to use the framework or library."
 createdAt: "2021-05-03"
 author: manoj-pawar
 ---
 
-Connecting to the database is the most common need of any application. Most of the time developers end up writing the repeated code for each CRUD operation. But it is not an efficient way. Let me explain the below approach to handle the maintainability and reusability of the code.
+The database is an integral part of most software applications. We always try to find out what is the best way to connect to the database. Often use readily available frameworks. The one thing I have experienced often frameworks or library provide a lot of abstractions to make it easy for end developers to use the framework or library. But this abstraction most of the time cost more resource consumptions. So, I was looking for a high-level lightweight framework or library with minimum abstraction. I do not find a framework or library that suits my expectations and then I have started implementing my own library named **Python-Jdbc**. Let me walk you through my approach to handling the maintainability and reusability of the code with minimal abstraction.
 
-Here I have defined an abstract class DatabaseConnector which has an abstract method `get_connection()`. It acts as a database connector. We can implement the DatabaseConnector class based upon our database system like MySQL, Oracle etc.
+I have defined an abstract class `Connector` which has an abstract method `get_connection()`. It acts as a database connector. We can implement the Connector class based on our database systems like MySQL, Oracle etc.
 
 ```python
 class Connector:
@@ -22,11 +22,11 @@ class Connector:
 
 ```
 
-Now the most important part is to handle the database CRUD operation in a more generic way to achieve maintainability and reusability. I have defined a class JdbcTemplate which required constructor dependency DatabaseConnector implementation class instance. It has the following methods
-- **`queryForTuple`**: To retrieve a record as Tuple.
-- **`queryForTupleList`**: To retrieve multiple records as Tuple in List.
-- **`queryForDict`**: To retrieve a record as a Dictionary object, where the key is the name of the column and value is the actual value of the column.
-- **`queryForDictList`**: To retrieve multiple records as a Dictionary object, where the key is the name of the column and value is the actual value of the column.
+Now the most important part is to handle the database CRUD operation in a more generic way to achieve maintainability and reusability. I have defined a class `JdbcTemplate` which required constructor dependency of the `Connector` implementation class instance. It has the following methods,
+- **`query_for_tuple`**: It executes query and returns database record as a tuple.
+- **`query_for_tuple_list`**: It executes query and returns database records as a list of tuples.
+- **`query_for_dict`**: It executes query and returns database record as a dictionary where the key is the name of the column and value is the actual value of the column.
+- **`query_for_dict_list`**: It executes query and returns database record as a list of dictionar, where the key is the name of the column and value is the actual value of the column.
 - **`update`**: To execute the Insert, Update and Delete queries. It returns the last row id.
 
 ```python
@@ -139,7 +139,7 @@ def close_cursor(connector: Connector, cursor):
 
 ```
 
-The MySQLConnector class inherits the superclass DatabaseConnector. It provides the implements with the abstract method `get_connection()` to return the database connection.
+The `MySQLConnector` class inherits the superclass `Connector`. It provides the implements with the abstract method `get_connection()` to return the database connection.
 
 ```python
 from jdbc.connector import Connector
@@ -164,7 +164,7 @@ class MySQLConnector(Connector):
         return Error
 ```
 
-Let's demo the above implementation to identify the benefit,
+As we see above implementation is lightweight and provides very minimal abstraction. Let's see how can use our application to perform CURD operation on the database.
 
 ```python
 from jdbc.mysql_connector import MySQLConnector
