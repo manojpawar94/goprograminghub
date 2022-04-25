@@ -6,6 +6,10 @@ import SocialMedia from '../components/SocialMedia'
 
 import profilepic from '../public/images/manoj-pawar.jpg'
 
+const myLoader = ({ src, width, quality }) => {
+    return `https://github.com/manojpawar94/goprograminghub/${src}?w=${width}&q=${quality || 75}`
+}
+
 export default function About() {
     return (
         <>
@@ -16,14 +20,14 @@ export default function About() {
             <Navbar />
             <main className='container'>
                 <div className="row mt-2">
-                    
+
                     <div className="col-md-4 text-center">
                         <Image className="rounded-circle profile-img p-5" alt="Manoj-Pawar-Profile" src={profilepic} />
                         <h3>Manoj Pawar</h3>
                         <hr />
                         <SocialMedia />
                     </div>
-                    
+
                     <div className="col-md-8 pt-5">
                         <h1 className="ps-4">Hello Techie,</h1>
                         <h3 className="ps-4">Thank you for visiting the GoProgrammingHub.com!</h3>
