@@ -6,10 +6,6 @@ import SocialMedia from '../components/SocialMedia'
 
 import profilepic from '../public/images/manoj-pawar.jpg'
 
-const myLoader = ({ src, width, quality }) => {
-    return `https://github.com/manojpawar94/goprograminghub/${src}?w=${width}&q=${quality || 75}`
-}
-
 export default function About() {
     return (
         <>
