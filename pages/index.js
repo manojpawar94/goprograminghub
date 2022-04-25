@@ -1,4 +1,5 @@
 import Head from 'next/head'
+
 import ArticleCard from '../components/ArticleCard'
 import Footer from '../components/Footer'
 import Navbar from '../components/Navbar'
