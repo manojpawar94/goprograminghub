@@ -24,6 +24,16 @@ export default function Home({ dsaPosts, problemSolvingPosts }) {
         />
         <div className="row">
           <div className="col-md-4">
+            <a href="/posts/bigdata/apache-spark">
+              <ImageBgCard
+                title={`Apache Spark`}
+                bgImageUrl={`/images/apaches-spark-bg.webp`}
+                content={""}
+                height="180px"
+              />
+            </a>
+          </div>
+          <div className="col-md-4">
             <a href="/posts/programming/python">
               <ImageBgCard
                 title={`Python Programming`}
@@ -43,19 +53,10 @@ export default function Home({ dsaPosts, problemSolvingPosts }) {
               />
             </a>
           </div>
-          <div className="col-md-4">
-            <a href="/posts/bigdata/apache-spark">
-              <ImageBgCard
-                title={`Apache Spark`}
-                bgImageUrl={`/images/apaches-spark-bg.webp`}
-                content={""}
-                height="180px"
-              />
-            </a>
-          </div>
         </div>
         <div className="row"></div>
-        <SectionHeader
+        {/*
+       <SectionHeader
           title={`Data Structure And Algorithms`}
           margin={`mt-2 mb-2`}
           link={`/posts/data-structures-and-algorithms`}
@@ -67,6 +68,7 @@ export default function Home({ dsaPosts, problemSolvingPosts }) {
             </div>
           ))}
         </div>
+       */}
         <SectionHeader
           title={`Problem Solving`}
           margin={`mt-2 mb-2`}
@@ -88,10 +90,10 @@ export default function Home({ dsaPosts, problemSolvingPosts }) {
 export function getStaticProps() {
   return {
     props: {
-      dsaPosts: getAllPosts("/_data-structures-and-algorithms").map((post) => ({
+      /* dsaPosts: getAllPosts("/_data-structures-and-algorithms").map((post) => ({
         ...post,
         author: getAuthorBySlug(post.author),
-      })),
+      })),*/
       problemSolvingPosts: getAllPosts("/_problemsolving").map((post) => ({
         ...post,
         author: getAuthorBySlug(post.author),
