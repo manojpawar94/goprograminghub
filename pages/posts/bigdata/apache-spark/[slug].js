@@ -37,7 +37,10 @@ export default function Post({ post, posts }) {
             />
           </div>
           <div className="col-md-3">
-            <RelatedArticle articles={posts} />
+            <RelatedArticle
+              articles={posts}
+              moreLink={`/posts/bigdata/apache-spark`}
+            />
           </div>
         </div>
       </main>

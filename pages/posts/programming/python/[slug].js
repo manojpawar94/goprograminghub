@@ -4,7 +4,11 @@ import Navbar from "../../../../components/Navbar";
 import SectionHeader from "../../../../components/SectionHeader";
 import ArticleAuthor from "../../../../components/ArticleAuthor";
 
-import { getAllPosts, getAuthorBySlug, getPostBySlug } from "../../../../lib/api";
+import {
+  getAllPosts,
+  getAuthorBySlug,
+  getPostBySlug,
+} from "../../../../lib/api";
 import Footer from "../../../../components/Footer";
 
 import RelatedArticle from "../../../../components/RelatedArticle";
@@ -31,7 +35,10 @@ export default function Post({ post, posts }) {
             />
           </div>
           <div className="col-md-3">
-            <RelatedArticle articles={posts} />
+            <RelatedArticle
+              articles={posts}
+              moreLink={`/posts/programming/python`}
+            />
           </div>
         </div>
       </main>

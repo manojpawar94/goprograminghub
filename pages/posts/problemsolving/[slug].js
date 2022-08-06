@@ -7,6 +7,7 @@ import ArticleAuthor from "../../../components/ArticleAuthor";
 import { getAllPosts, getAuthorBySlug, getPostBySlug } from "../../../lib/api";
 
 import Footer from "../../../components/Footer";
+import RelatedArticle from "../../../components/RelatedArticle";
 
 export default function Post({ post, posts }) {
   return (
@@ -18,7 +19,7 @@ export default function Post({ post, posts }) {
       <Navbar />
       <main className="container mt-2">
         <div className="row">
-          <div className="col-md-12">
+          <div className="col-md-9">
             <SectionHeader title={post.title} margin={`mt-2 mb-2`} />
             <ArticleAuthor
               name={post.author.name}
@@ -28,6 +29,12 @@ export default function Post({ post, posts }) {
             <div
               className="text-justify"
               dangerouslySetInnerHTML={{ __html: post.body }}
+            />
+          </div>
+          <div className="col-md-3">
+            <RelatedArticle
+              articles={posts}
+              moreLink={`/posts/prblemsolving`}
             />
           </div>
         </div>

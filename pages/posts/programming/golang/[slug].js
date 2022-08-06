@@ -6,7 +6,11 @@ import SectionHeader from "../../../../components/SectionHeader";
 import ArticleAuthor from "../../../../components/ArticleAuthor";
 import RelatedArticle from "../../../../components/RelatedArticle";
 
-import { getAllPosts, getAuthorBySlug, getPostBySlug } from "../../../../lib/api";
+import {
+  getAllPosts,
+  getAuthorBySlug,
+  getPostBySlug,
+} from "../../../../lib/api";
 
 import Footer from "../../../../components/Footer";
 
@@ -33,7 +37,10 @@ export default function Post({ post, posts }) {
             />
           </div>
           <div className="col-md-3">
-            <RelatedArticle articles={posts} />
+            <RelatedArticle
+              articles={posts}
+              moreLink={`/posts/programming/golang`}
+            />
           </div>
         </div>
       </main>
