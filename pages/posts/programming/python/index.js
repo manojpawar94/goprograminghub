@@ -6,6 +6,7 @@ import ArticleCard from "../../../../components/ArticleCard";
 
 import { getAllPosts, getAuthorBySlug } from "../../../../lib/api";
 import Footer from "../../../../components/Footer";
+import ImageBgCard from "../../../../components/ImageBgCard";
 
 export default function Posts({ posts }) {
   return (

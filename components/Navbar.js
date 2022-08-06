@@ -1,6 +1,6 @@
 function Navbar() {
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-white ps-4 pe-4 border-bottom fw-bold">
+    <nav className="navbar navbar-expand-lg navbar-light bg-white ps-4 pe-4 border-bottom ">
       <div className="container-fluid">
         <a className="navbar-brand" href="/">
           Go Programming Hub
@@ -24,9 +24,9 @@ function Navbar() {
                 Home
               </a>
             </li>
-            <li class="nav-item dropdown">
+            <li className="nav-item dropdown">
               <a
-                class="nav-link dropdown-toggle"
+                className="nav-link dropdown-toggle"
                 href="#"
                 id="navbarDropdown"
                 role="button"
@@ -35,15 +35,15 @@ function Navbar() {
               >
                 Languages
               </a>
-              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
                 <li>
-                  <a class="dropdown-item" href="/posts/programming/python">
-                    Python
+                  <a className="dropdown-item" href="/posts/programming/python">
+                    Python Programming
                   </a>
                 </li>
                 <li>
-                  <a class="dropdown-item" href="/posts/programming/golang">
-                    Go Lang
+                  <a className="dropdown-item" href="/posts/programming/golang">
+                    Go Lang Programming
                   </a>
                 </li>
               </ul>
@@ -61,9 +61,9 @@ function Navbar() {
                 Problem Solving
               </a>
             </li>
-            <li class="nav-item dropdown">
+            <li className="nav-item dropdown">
               <a
-                class="nav-link dropdown-toggle"
+                className="nav-link dropdown-toggle"
                 href="#"
                 id="navbarDropdown"
                 role="button"
@@ -72,9 +72,12 @@ function Navbar() {
               >
                 BigData
               </a>
-              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
                 <li>
-                  <a class="dropdown-item" href="/posts/bigdata/apache-spark">
+                  <a
+                    className="dropdown-item"
+                    href="/posts/bigdata/apache-spark"
+                  >
                     Apache Spark
                   </a>
                 </li>

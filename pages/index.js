@@ -2,17 +2,13 @@ import Head from "next/head";
 
 import ArticleCard from "../components/ArticleCard";
 import Footer from "../components/Footer";
+import ImageBgCard from "../components/ImageBgCard";
 import Navbar from "../components/Navbar";
 import SectionHeader from "../components/SectionHeader";
 
 import { getAllPosts, getAuthorBySlug } from "../lib/api";
 
-export default function Home({
-  dsaPosts,
-  pythonPosts,
-  golangPosts,
-  problemSolvingPosts,
-}) {
+export default function Home({ dsaPosts, problemSolvingPosts }) {
   return (
     <>
       <Head>
@@ -21,6 +17,44 @@ export default function Home({
       </Head>
       <Navbar />
       <main className="container mt-2">
+        <SectionHeader
+          title={`Welcome to GoProgrammingHub!`}
+          margin={`mt-2 mb-2`}
+          link={`#`}
+        />
+        <div className="row">
+          <div className="col-md-4">
+            <a href="/posts/programming/python">
+              <ImageBgCard
+                title={`Python Programming`}
+                bgImageUrl={`/images/python-bg.png`}
+                content={""}
+                height="180px"
+              />
+            </a>
+          </div>
+          <div className="col-md-4">
+            <a href="/posts/programming/golang">
+              <ImageBgCard
+                title={`Go Lang Programming`}
+                bgImageUrl={`/images/golang-bg.jpg`}
+                content={""}
+                height="180px"
+              />
+            </a>
+          </div>
+          <div className="col-md-4">
+            <a href="/posts/bigdata/apache-spark">
+              <ImageBgCard
+                title={`Apache Spark`}
+                bgImageUrl={`/images/apaches-spark-bg.webp`}
+                content={""}
+                height="180px"
+              />
+            </a>
+          </div>
+        </div>
+        <div className="row"></div>
         <SectionHeader
           title={`Data Structure And Algorithms`}
           margin={`mt-2 mb-2`}
@@ -45,30 +79,6 @@ export default function Home({
             </div>
           ))}
         </div>
-        <SectionHeader
-          title={`Python Programming`}
-          margin={`mt-2 mb-2`}
-          link={`/posts/python`}
-        />
-        <div className="row">
-          {pythonPosts.slice(0, 3).map((pythonPost, index) => (
-            <div className="col-md-4 d-flex align-items-stretch" key={index}>
-              <ArticleCard post={pythonPost} />
-            </div>
-          ))}
-        </div>
-        <SectionHeader
-          title={`Go Lang Programming`}
-          margin={`mt-2 mb-2`}
-          link={`/posts/golang`}
-        />
-        <div className="row">
-          {golangPosts.slice(0, 3).map((golangPost, index) => (
-            <div className="col-md-4  d-flex align-items-stretch" key={index}>
-              <ArticleCard post={golangPost} />
-            </div>
-          ))}
-        </div>
       </main>
       <Footer />
     </>
@@ -78,14 +88,6 @@ export default function Home({
 export function getStaticProps() {
   return {
     props: {
-      pythonPosts: getAllPosts("/_programming/python").map((post) => ({
-        ...post,
-        author: getAuthorBySlug(post.author),
-      })),
-      golangPosts: getAllPosts("/_programming/golang").map((post) => ({
-        ...post,
-        author: getAuthorBySlug(post.author),
-      })),
       dsaPosts: getAllPosts("/_data-structures-and-algorithms").map((post) => ({
         ...post,
         author: getAuthorBySlug(post.author),

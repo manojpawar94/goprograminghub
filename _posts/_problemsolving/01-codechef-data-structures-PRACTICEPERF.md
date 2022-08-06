@@ -6,7 +6,7 @@ author: manoj-pawar
 ---
 
 <div class="row">
-<div class="col-sm-6">
+<div class="col-md-6">
 
 #### Problem
 
@@ -71,7 +71,7 @@ Chef solved at least 1010 problems in all the four weeks. Hence, the number of w
 Chef was not able to solve at least 1010 problems in any of the four weeks. Hence, the number of weeks in which Chef met his target is 00
 
 </div>
-<div class="col-sm-6">
+<div class="col-md-6">
 
 #### Solution : Java
 
