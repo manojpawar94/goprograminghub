@@ -58,7 +58,7 @@ export function getStaticProps({ params }) {
 export function getStaticPaths() {
   return {
     fallback: false,
-    paths: getAllPosts("/_dsa").map((post) => ({
+    paths: getAllPosts("/_data-structures-and-algorithms").map((post) => ({
       params: {
         slug: post.slug,
       },

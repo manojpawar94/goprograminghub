@@ -6,7 +6,11 @@ import SectionHeader from "../../../../components/SectionHeader";
 import ArticleAuthor from "../../../../components/ArticleAuthor";
 import RelatedArticle from "../../../../components/RelatedArticle";
 
-import { getAllPosts, getAuthorBySlug, getPostBySlug } from "../../../../lib/api";
+import {
+  getAllPosts,
+  getAuthorBySlug,
+  getPostBySlug,
+} from "../../../../lib/api";
 
 import Footer from "../../../../components/Footer";
 
@@ -61,7 +65,7 @@ export function getStaticProps({ params }) {
 export function getStaticPaths() {
   return {
     fallback: false,
-    paths: getAllPosts("/apache-spark").map((post) => ({
+    paths: getAllPosts("/_bigdata/apache-spark").map((post) => ({
       params: {
         slug: post.slug,
       },
