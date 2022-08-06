@@ -1,7 +1,11 @@
-export default function SectionHeader({ title, margin }) {
-    return <div className="row">
+export default function SectionHeader({ title, margin, link }) {
+  return (
+    <div className="row">
+      <a className="nav-link" href={link}>
         <div className={`col-sm-12 ${margin}`}>
-            <h3>{title}</h3>
+          <h3>{title}</h3>
         </div>
+      </a>
     </div>
+  );
 }
