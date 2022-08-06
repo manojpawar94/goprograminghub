@@ -49,7 +49,7 @@ Explanation: The answer is "b", with the length of 1.
 <div class="tab-content" id="myTabContent">
   <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
   
-  ```java
+  ```java[class="line-numbers"]
 class Solution {
     public int lengthOfLongestSubstring(String s) {
         int[] chars = new int[128];

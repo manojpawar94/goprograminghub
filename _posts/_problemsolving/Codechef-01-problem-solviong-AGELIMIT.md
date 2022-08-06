@@ -61,7 +61,7 @@ Test case 44: The age of Chef is 15. His age does not satisfy the minimum age li
 <div class="tab-content" id="myTabContent">
   <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
   
-  ```java
+  ```java[class="line-numbers"]
 import java.util.Scanner;
 
 class Codechef

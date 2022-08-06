@@ -67,7 +67,7 @@ It does not matter what you leave beyond the returned k (hence they are undersco
 <div class="tab-content" id="myTabContent">
   <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
   
-  ```go
+  ```go[class="line-numbers"]
 func removeDuplicates(nums []int) int {
 	// checking the duplicate element
 	length := len(nums)
@@ -124,3 +124,5 @@ func removeDuplicates(nums []int) int {
 
 </div>
 </div>
+
+> **Original Problem:** https://leetcode.com/problems/maximum-subarray/

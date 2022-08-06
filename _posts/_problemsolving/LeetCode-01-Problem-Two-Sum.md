@@ -47,7 +47,7 @@ Output: [1,2]
 <div class="tab-content" id="myTabContent">
   <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
   
-  ```java
+  ```java[class="line-numbers"]
 class Solution {
 
     public int[] twoSum(int[] nums, int target) {

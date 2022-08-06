@@ -16,7 +16,7 @@ Go program has the same structure as other programming languages,
 
 The `main()` function is the program execution entry point for the Go program.
 
-```go
+```go[class="line-numbers"]
 package main
 import "fmt"
 func main(){

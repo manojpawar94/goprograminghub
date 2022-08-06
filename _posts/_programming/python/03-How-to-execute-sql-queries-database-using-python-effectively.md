@@ -9,7 +9,7 @@ The database is an integral part of most software applications. We always try to
 
 I have defined an abstract class `Connector` which has an abstract method `get_connection()`. It acts as a database connector. We can implement the Connector class based on our database systems like MySQL, Oracle etc.
 
-```python
+```python[class="line-numbers"]
 class Connector:
     def get_connection(self):
         """It is abstract method. The implementing class must return the connection object."""
@@ -19,17 +19,17 @@ class Connector:
     def errors_type():
         """It is an abstract method. The implementing class must return the class extending Exception"""
         pass
-
 ```
 
 Now the most important part is to handle the database CRUD operation in a more generic way to achieve maintainability and reusability. I have defined a class `JdbcTemplate` which required constructor dependency of the `Connector` implementation class instance. It has the following methods,
+
 - **`query_for_tuple`**: It executes query and returns database record as a tuple.
 - **`query_for_tuple_list`**: It executes query and returns database records as a list of tuples.
 - **`query_for_dict`**: It executes query and returns database record as a dictionary where the key is the name of the column and value is the actual value of the column.
 - **`query_for_dict_list`**: It executes query and returns database record as a list of dictionar, where the key is the name of the column and value is the actual value of the column.
 - **`update`**: To execute the Insert, Update and Delete queries. It returns the last row id.
 
-```python
+```python[class="line-numbers"]
 import logging as log
 
 from jdbc.connector import Connector
@@ -136,12 +136,11 @@ def close_cursor(connector: Connector, cursor):
             cursor.close()
         except connector.errors_type() as e:
             log.error("error occurred while closing cursor ", e.msg, exc_info=True)
-
 ```
 
 The `MySQLConnector` class inherits the superclass `Connector`. It provides the implements with the abstract method `get_connection()` to return the database connection.
 
-```python
+```python[class="line-numbers"]
 from jdbc.connector import Connector
 from mysql.connector.errors import Error
 from mysql.connector.pooling import MySQLConnectionPool, PooledMySQLConnection
@@ -166,7 +165,7 @@ class MySQLConnector(Connector):
 
 As we see above implementation is lightweight and provides very minimal abstraction. Let's see how can use our application to perform CURD operation on the database.
 
-```python
+```python[class="line-numbers"]
 from jdbc.mysql_connector import MySQLConnector
 from jdbc.template import JdbcTemplate
 
@@ -188,7 +187,7 @@ jdbcTemplate.query_for_tuple("select * from users where user_id = %s ", (1234,))
 # query to retrieve list of tuples
 jdbcTemplate.query_for_tuple_list("select * from users where is_active = %s", ('A',))
 
-# query to retrieve dictionary 
+# query to retrieve dictionary
 jdbcTemplate.query_for_dict("select * from users where user_id = %s", (1234,))
 
 # query to retrieve list of dictionary
@@ -202,4 +201,5 @@ jdbcTemplate.update("Update users set is_activev = %s where user_id = %s", ('A',
 ```
 
 You can find the full implementation of above code in the below Github URL,
--  [Python-Jdbc-Github-Repo](https://github.com/manojpawar94/python-jdbc)
+
+> **Github Repository**: [Python-Jdbc-Github-Repo](https://github.com/manojpawar94/python-jdbc)

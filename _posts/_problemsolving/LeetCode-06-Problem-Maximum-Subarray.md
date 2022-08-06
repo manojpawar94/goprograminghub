@@ -50,7 +50,7 @@ Output: 23
 <div class="tab-content" id="myTabContent">
   <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
   
-  ```java
+  ```java[class="line-numbers"]
 class Solution {
     public int maxSubArray(int[] nums) {
         int maxSum = Integer.MIN_VALUE, sum = 0;
@@ -73,3 +73,5 @@ class Solution {
 
 </div>
 </div>
+
+> **Original Problem:** https://leetcode.com/problems/maximum-subarray/

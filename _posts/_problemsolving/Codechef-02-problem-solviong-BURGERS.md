@@ -59,7 +59,7 @@ Test case 4: Chef has 23 patties and 17 buns. Chef can make at most 17 burgers b
 <div class="tab-content" id="myTabContent">
   <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
   
-  ```java
+  ```java[class="line-numbers"]
 import java.util.Scanner;
 
 class Codechef {

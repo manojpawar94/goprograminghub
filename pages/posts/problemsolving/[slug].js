@@ -27,6 +27,7 @@ export default function Post({ post, posts }) {
               date={post.createdAt}
             />
             <div
+              data-prismjs-copy-timeout="500"
               className="text-justify"
               dangerouslySetInnerHTML={{ __html: post.body }}
             />

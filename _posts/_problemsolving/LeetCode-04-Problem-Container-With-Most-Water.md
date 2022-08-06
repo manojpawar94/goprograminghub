@@ -49,7 +49,7 @@ Output: 1
 <div class="tab-content" id="myTabContent">
   <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
   
-  ```java
+  ```java[class="line-numbers"]
 class Solution {
     public int maxArea(int[] heights) {
         int maxArea = 0, p1 = 0, p2 = heights.length -1 ;

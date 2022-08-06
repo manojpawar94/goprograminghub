@@ -35,8 +35,6 @@ Output: true
 > - 1 <= nums.length <= 10^5
 > - -10^9 <= nums[i] <= 10^9
 
-
-
 #### Solution
 
 <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -46,20 +44,22 @@ Output: true
 </ul>
 <div class="tab-content" id="myTabContent">
   <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-  
-  ```java
+
+```java[class="line-numbers"]
 class Solution {
-    public boolean containsDuplicate(int[] nums) {
-        Set<Integer> set = new HashSet<Integer>();
-        for(int num : nums){
-            if(!set.add(num)){
-                return true;
-            }
-        }
-        return false;
-    }
+  public boolean containsDuplicate(int[] nums) {
+      Set<Integer> set = new HashSet<Integer>();
+      for(int num : nums){
+          if(!set.add(num)){
+              return true;
+          }
+      }
+      return false;
+  }
 }
 ```
 
 </div>
 </div>
+
+> **Original Problem:** https://leetcode.com/problems/contains-duplicate/
