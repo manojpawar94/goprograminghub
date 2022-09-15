@@ -1,5 +1,4 @@
 import Head from "next/head";
-import { useEffect } from "react";
 
 import Navbar from "../../../../components/Navbar";
 import SectionHeader from "../../../../components/SectionHeader";
@@ -10,11 +9,13 @@ import {
   getAllPosts,
   getAuthorBySlug,
   getPostBySlug,
+  getPostIndexBuSlug,
 } from "../../../../lib/api";
 
 import Footer from "../../../../components/Footer";
+import PostNav from "../../../../components/PostNav";
 
-export default function Post({ post, posts }) {
+export default function Post({ index, post, posts }) {
   return (
     <>
       <Head>
@@ -31,10 +32,12 @@ export default function Post({ post, posts }) {
               profilePictureUrl={post.author.profilePictureUrl}
               date={post.createdAt}
             />
+            <PostNav index={index} posts={posts} />
             <div
               className="text-justify"
               dangerouslySetInnerHTML={{ __html: post.body }}
             />
+            <PostNav index={index} posts={posts} />
           </div>
           <div className="col-md-3">
             <RelatedArticle
@@ -53,6 +56,7 @@ export function getStaticProps({ params }) {
   const post = getPostBySlug("/_bigdata/apache-spark", params.slug);
   const author = getAuthorBySlug(post.author);
   const posts = getAllPosts("/_bigdata/apache-spark");
+  const index = getPostIndexBuSlug(params.slug);
 
   return {
     props: {
@@ -61,6 +65,7 @@ export function getStaticProps({ params }) {
         author,
       },
       posts: posts,
+      index,
     },
   };
 }
