@@ -71,6 +71,20 @@ class Solution {
 }
 ```
 
+The provided Java code is a solution to the "Maximum Subarray" problem. It efficiently finds the contiguous subarray with the largest sum within a given array `nums`. Here's how the code works:
+
+1. The `maxSubArray` function takes an integer array `nums` as input and returns an integer representing the maximum sum of a contiguous subarray.
+2. It initializes `maxSum` to the minimum possible value (`Integer.MIN_VALUE`) and `sum` to 0.
+3. The loop iterates through the array using the index variable.
+4. Inside the loop:
+   - The current element is added to the `sum`.
+   - If the `sum` becomes greater than the current `maxSum`, the `maxSum` is updated.
+   - If the `sum` becomes negative, it means that continuing the current subarray won't lead to a larger sum, so the `sum` is reset to 0 to start a new potential subarray.
+5. Finally, the function returns `maxSum`, which holds the maximum sum of a contiguous subarray.
+
+The solution follows the Kadane's algorithm, which is an efficient algorithm for finding the maximum subarray sum in an array. It keeps track of the current sum and resets it when a negative sum is encountered, while also maintaining the overall maximum sum encountered so far.
+
+This code provides an optimal solution for finding the maximum subarray sum and is suitable for larger arrays as well.
 </div>
 </div>
 

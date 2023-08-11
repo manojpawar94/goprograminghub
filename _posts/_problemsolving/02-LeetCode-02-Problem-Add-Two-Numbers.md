@@ -40,10 +40,9 @@ Output: [8,9,9,9,0,0,0,1]
 
 ##### Constraints
 
-> - The number of nodes in each linked list is in the range [1, 100].
-> - 0 <= Node.val <= 9
-> - It is guaranteed that the list represents a number that does not have leading zeros.
-
+> -   The number of nodes in each linked list is in the range [1, 100].
+> -   0 <= Node.val <= 9
+> -   It is guaranteed that the list represents a number that does not have leading zeros.
 
 #### Solution
 
@@ -55,7 +54,7 @@ Output: [8,9,9,9,0,0,0,1]
 <div class="tab-content" id="myTabContent">
   <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
   
-  ```java[class="line-numbers"]
+```java[class="line-numbers"]
 /**
  * Definition for singly-linked list.
  * public class ListNode {
@@ -69,10 +68,10 @@ Output: [8,9,9,9,0,0,0,1]
 import java.util.Objects;
 
 class Solution {
-    public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
-        int carry = 0;
-        ListNode head = null;
-        ListNode intermediate = null;
+public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+int carry = 0;
+ListNode head = null;
+ListNode intermediate = null;
 
         while(l1 != null || l2 != null) {
             int sum = carry;
@@ -105,8 +104,27 @@ class Solution {
 
         return head;
     }
+
 }
+
 ```
 
+The provided Java code represents a solution for adding two numbers that are represented as linked lists, where each node in the linked list contains a single digit of the number. The solution uses a straightforward approach to iterate through both linked lists and perform the addition, considering the carry value. Here's how the code works:
+
+1. The `addTwoNumbers` function takes two linked list inputs `l1` and `l2`, which represent the two numbers to be added.
+2. It initializes variables `carry`, `head`, and `intermediate`.
+3. The loop iterates while either `l1` or `l2` has more digits or there's a carry value.
+4. Inside the loop:
+   - It calculates the sum of the digits along with the carry value.
+   - Creates a new node with the least significant digit of the sum and potentially the carry from the previous step.
+   - Updates the `intermediate` node's `next` pointer to the newly created node.
+   - Moves to the next digit in both `l1` and `l2` if they exist.
+   - Updates the `carry` for the next iteration.
+5. After the loop, if there's still a carry left, it creates an additional node to represent it.
+6. The `head` node is returned, which points to the beginning of the resulting linked list.
+
+This code effectively performs the addition of two numbers represented as linked lists while considering carry values. It constructs the resulting linked list digit by digit and handles the carry properly.
+
+Please note that you need to make sure the `ListNode` class is defined properly and imported.
 </div>
 </div>

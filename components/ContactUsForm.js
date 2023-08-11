@@ -1,5 +1,5 @@
 function ContactUsForm() {
-    return <></>
+    return <></>;
 }
 
-export default ContactUsForm
+export default ContactUsForm;

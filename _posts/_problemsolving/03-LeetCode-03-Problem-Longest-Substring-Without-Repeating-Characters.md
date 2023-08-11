@@ -78,5 +78,26 @@ class Solution {
 }
 ```
 
+The provided Java code represents a solution to the "Longest Substring Without Repeating Characters" problem using the sliding window technique. It efficiently finds the length of the longest substring without repeating characters within a given string `s`. Here's how the code works:
+
+1. The `lengthOfLongestSubstring` function takes a string `s` as input and returns an integer representing the length of the longest substring without repeating characters.
+2. It initializes an array `chars` of size 128 to keep track of character occurrences.
+3. The `left` and `right` pointers represent the sliding window. `left` points to the start of the current substring, and `right` points to the end.
+4. `res` keeps track of the length of the longest substring without repeating characters.
+5. The loop iterates while the `right` pointer is within the bounds of the string `s`.
+6. Inside the loop:
+   - The character at index `right` is fetched from the string.
+   - The count of the character is incremented in the `chars` array.
+   - A nested loop (`while (chars[r] > 1)`) runs while the character count becomes greater than 1 (indicating a repeating character). In this loop:
+     - The character at index `left` is fetched.
+     - The count of the character is decremented in the `chars` array.
+     - The `left` pointer is moved one step to the right.
+   - The length of the current substring (`right - left + 1`) is compared with the current `res`, and the maximum value is stored in `res`.
+   - The `right` pointer is moved one step to the right.
+7. Finally, the function returns the value of `res`.
+
+The sliding window technique allows the algorithm to efficiently find the longest substring without repeating characters by maintaining a sliding window with unique characters. The code is well-structured and effectively solves the problem.
+
+Please note that the code assumes that the input string `s` only consists of ASCII characters, which is why an array of size 128 is used.
 </div>
 </div>

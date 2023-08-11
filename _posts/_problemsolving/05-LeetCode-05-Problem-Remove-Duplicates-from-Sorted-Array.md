@@ -122,6 +122,20 @@ func removeDuplicates(nums []int) int {
 }
 ```
 
+The provided Go code is a solution for the "Remove Duplicates from Sorted Array" problem. It removes duplicate elements from a sorted integer array in-place and returns the new length of the array after removing the duplicates. Here's how the code works:
+
+1. The `removeDuplicates` function takes a slice of integers `nums` as input and returns an integer representing the new length of the array after removing duplicates.
+2. It first checks if the length of the array is 0, in which case it returns 0 since there are no elements to process.
+3. The variables `numOfDuplicate`, `lastNum`, `isPresent`, and `value` are initialized.
+4. The loop iterates through the array, and for each element:
+   - If `value` is greater than `lastNum`, it means that there are no more valid elements to consider, so the current element is set to 0, and `numOfDuplicate` is incremented.
+   - A nested loop (`for !isPresent`) searches for the next valid value that is not a duplicate. If found, `isPresent` is set to true and the loop breaks.
+   - If `isPresent` is true, the current element is set to `value`, and `value` is incremented.
+5. Finally, the function prints the modified array and returns the length of the array after removing duplicates (`length - numOfDuplicate`).
+
+The solution primarily relies on the logic to remove duplicates by iterating through the array and keeping track of the current value to be assigned to valid elements. It follows the in-place requirement by modifying the array directly.
+
+Please note that the provided solution can be optimized further and there are more concise ways to achieve the same result using Go's features.
 </div>
 </div>
 

@@ -79,5 +79,16 @@ class Codechef {
 }
 ```
 
+The provided Java code is a solution for the "BURGERS" problem on CodeChef. The problem involves calculating the maximum number of burgers that Chef can make given a certain number of patties and buns. Here's how the code works:
+
+1. The `main` method reads the number of test cases (`noOfTc`) from input.
+2. A loop iterates through each test case:
+   a. It reads the number of patties and buns from input.
+   b. The code then calculates the maximum number of burgers that can be made by taking the minimum of the number of patties and buns.
+   c. The result is printed.
+
+The solution effectively processes the input test cases and calculates the maximum number of burgers that can be made based on the available patties and buns.
+
+Please note that this code assumes the input follows the provided format and does not include extensive error handling.
 </div>
 </div>

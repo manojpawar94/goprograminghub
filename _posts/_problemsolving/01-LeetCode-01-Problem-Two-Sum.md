@@ -30,10 +30,10 @@ Output: [1,2]
 
 ##### Constraints
 
-> - 2 <= nums.length <= 104
-> - -109 <= nums[i] <= 109
-> - -109 <= target <= 109
-> - Only one valid answer exists.
+> -   2 <= nums.length <= 104
+> -   -109 <= nums[i] <= 109
+> -   -109 <= target <= 109
+> -   Only one valid answer exists.
 
 **Follow-up:** Can you come up with an algorithm that is less than O(n2) time complexity?
 
@@ -68,7 +68,20 @@ class Solution {
     }
 
 }
+
 ```
 
+Above is an implementation of the "Two Sum" problem in Java. It utilizes a HashMap to store encountered numbers along with their indices for efficient lookup. The code is quite clear and follows the same logic to achieve O(n) time complexity. Here's a breakdown of how the code works:
+
+1. Create a HashMap called `lookup` to store encountered numbers as keys and their indices as values.
+2. Loop through the array `nums`, using an index to keep track of the current position.
+3. Calculate the complement by subtracting the current number from the target value.
+4. Check if the complement exists in the `lookup` HashMap using `lookup.containsKey(complement)`. If it does, it means you've found the pair of numbers that add up to the target.
+5. If the complement is found, return the indices of the current number and the complement from the `lookup` HashMap using `lookup.get(complement)` and the current index.
+6. If the complement is not found, add the current number and its index to the `lookup` HashMap.
+7. If no solution is found after looping through the array, return `null` to indicate that no valid pair was found.
+
+Overall, code effectively solves the "Two Sum" problem with an optimal time complexity using a HashMap to store and look up numbers and their indices efficiently.
 </div>
 </div>
+

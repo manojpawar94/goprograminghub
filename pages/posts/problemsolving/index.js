@@ -8,35 +8,38 @@ import { getAllPosts, getAuthorBySlug } from "../../../lib/api";
 import Footer from "../../../components/Footer";
 
 export default function Posts({ posts }) {
-  return (
-    <>
-      <Head>
-        <title>Posts | GoProgrammingHub</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-      <Navbar />
-      <main className="container mt-2 pb-4">
-        <SectionHeader title={`Problem Solving`} margin={`mt-2 mb-2`} />
-        <div className="row">
-          {posts.map((post, index) => (
-            <div className="col-md-4 d-flex align-items-stretch" key={index}>
-              <ArticleCard post={post} />
-            </div>
-          ))}
-        </div>
-      </main>
-      <Footer />
-    </>
-  );
+    return (
+        <>
+            <Head>
+                <title>Posts | GoProgrammingHub</title>
+                <link rel="icon" href="/favicon.ico" />
+            </Head>
+            <Navbar />
+            <main className="container mt-2 pb-4">
+                <SectionHeader title={`Problem Solving`} margin={`mt-2 mb-2`} />
+                <div className="row">
+                    {posts.map((post, index) => (
+                        <div
+                            className="col-md-4 d-flex align-items-stretch"
+                            key={index}
+                        >
+                            <ArticleCard post={post} />
+                        </div>
+                    ))}
+                </div>
+            </main>
+            <Footer />
+        </>
+    );
 }
 
 export function getStaticProps() {
-  return {
-    props: {
-      posts: getAllPosts("/_problemsolving").map((post) => ({
-        ...post,
-        author: getAuthorBySlug(post.author),
-      })),
-    },
-  };
+    return {
+        props: {
+            posts: getAllPosts("/_problemsolving").map((post) => ({
+                ...post,
+                author: getAuthorBySlug(post.author),
+            })),
+        },
+    };
 }
