@@ -71,7 +71,7 @@ class Solution {
 }
 ```
 
-The provided Java code is a solution to the "Maximum Subarray" problem. It efficiently finds the contiguous subarray with the largest sum within a given array `nums`. Here's how the code works:
+The above solution is for the "Maximum Subarray" problem. It efficiently finds the contiguous subarray with the largest sum within a given array `nums`. Here's how the code works:
 
 1. The `maxSubArray` function takes an integer array `nums` as input and returns an integer representing the maximum sum of a contiguous subarray.
 2. It initializes `maxSum` to the minimum possible value (`Integer.MIN_VALUE`) and `sum` to 0.

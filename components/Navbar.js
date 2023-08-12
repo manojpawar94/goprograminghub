@@ -1,9 +1,19 @@
+import Image from "next/image";
+import brandLogo from "../public/images/logo.png";
+
 function Navbar() {
     return (
         <nav className="navbar navbar-expand-lg navbar-light bg-white ps-4 pe-4 border-bottom ">
             <div className="container-fluid">
                 <a className="navbar-brand" href="/">
-                    Go Programming Hub
+                    <Image
+                        src={brandLogo}
+                        alt="GO PROGRAMMING HUB"
+                        width={280}
+                        height={40}
+                        className="m-0 p-0"
+                        style={{ objectFit: "contain" }}
+                    />
                 </a>
                 <button
                     className="navbar-toggler"
@@ -24,7 +34,7 @@ function Navbar() {
                     <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
                         <li className="nav-item">
                             <a className="nav-link" href="/">
-                                Home
+                                HOME
                             </a>
                         </li>
                         <li className="nav-item dropdown">
@@ -36,7 +46,7 @@ function Navbar() {
                                 data-bs-toggle="dropdown"
                                 aria-expanded="false"
                             >
-                                Programming Languages
+                                PROGRAMMING
                             </a>
                             <ul
                                 className="dropdown-menu"
@@ -47,7 +57,7 @@ function Navbar() {
                                         className="dropdown-item"
                                         href="/posts/programming/python"
                                     >
-                                        Python Programming
+                                        PYTHON
                                     </a>
                                 </li>
                                 <li>
@@ -55,7 +65,7 @@ function Navbar() {
                                         className="dropdown-item"
                                         href="/posts/programming/golang"
                                     >
-                                        Go Lang Programming
+                                        GOLANG
                                     </a>
                                 </li>
                             </ul>
@@ -75,7 +85,7 @@ function Navbar() {
                                 className="nav-link"
                                 href="/posts/problemsolving"
                             >
-                                Problem Solving
+                                PROBLEM SOLVING
                             </a>
                         </li>
                         <li className="nav-item dropdown">
@@ -87,7 +97,7 @@ function Navbar() {
                                 data-bs-toggle="dropdown"
                                 aria-expanded="false"
                             >
-                                BigData
+                                BIGDATA
                             </a>
                             <ul
                                 className="dropdown-menu"
@@ -98,14 +108,14 @@ function Navbar() {
                                         className="dropdown-item"
                                         href="/posts/bigdata/apache-spark"
                                     >
-                                        Apache Spark
+                                        APACHE SPARK
                                     </a>
                                 </li>
                             </ul>
                         </li>
                         <li className="nav-item">
                             <a className="nav-link" href="/about">
-                                About Us
+                                ABOUT
                             </a>
                         </li>
                     </ul>

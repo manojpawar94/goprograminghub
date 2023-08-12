@@ -66,7 +66,7 @@ class Solution {
 }
 ```
 
-The provided Java code represents a solution for the "Container With Most Water" problem using the two-pointer approach to find the maximum amount of water a container can store between vertical lines. Here's how the code works:
+The above solution is for the "Container With Most Water" problem using the two-pointer approach to find the maximum amount of water a container can store between vertical lines. Here's how the code works:
 
 1. The `maxArea` function takes an integer array `heights` as input and returns an integer representing the maximum amount of water a container can store.
 2. It initializes variables `maxArea` to store the maximum area and `p1` and `p2` as pointers to track the left and right vertical lines.

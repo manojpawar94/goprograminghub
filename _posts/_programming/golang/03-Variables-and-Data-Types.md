@@ -5,6 +5,8 @@ createdAt: "2021-05-03"
 author: manoj-pawar
 ---
 
+> All About Variables and Different Types of Data in GoLang
+
 Welcome to this exciting tutorial where we'll dive into the world of variables and data types in GoLang. These are like building blocks in your coding adventure. Let's make them crystal clear with easy explanations and examples!
 
 #### Meet Variables - Your Data Holders

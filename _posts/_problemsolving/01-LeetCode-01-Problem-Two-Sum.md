@@ -71,7 +71,7 @@ class Solution {
 
 ```
 
-Above is an implementation of the "Two Sum" problem in Java. It utilizes a HashMap to store encountered numbers along with their indices for efficient lookup. The code is quite clear and follows the same logic to achieve O(n) time complexity. Here's a breakdown of how the code works:
+The above Java solution is for the "Two Sum" problem. It utilizes a HashMap to store encountered numbers along with their indices for efficient lookup. The code is quite clear and follows the same logic to achieve O(n) time complexity. Here's a breakdown of how the code works:
 
 1. Create a HashMap called `lookup` to store encountered numbers as keys and their indices as values.
 2. Loop through the array `nums`, using an index to keep track of the current position.

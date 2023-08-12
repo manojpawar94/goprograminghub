@@ -93,7 +93,7 @@ class Codechef
 }
 ```
 
-The provided Java code is a solution for the "AGELIMIT" problem on CodeChef. The problem involves determining whether a person is eligible to take an exam based on their age. Here's how the code works:
+The above solution is for the "AGELIMIT" problem on CodeChef. The problem involves determining whether a person is eligible to take an exam based on their age. Here's how the code works:
 
 1. The `main` method reads the number of test cases (`noOfTc`) from input.
 2. For each test case, it reads a line of input containing three integers `X`, `Y`, and `A`.

@@ -78,7 +78,7 @@ class Solution {
 }
 ```
 
-The provided Java code represents a solution to the "Longest Substring Without Repeating Characters" problem using the sliding window technique. It efficiently finds the length of the longest substring without repeating characters within a given string `s`. Here's how the code works:
+The above solution is for the "Longest Substring Without Repeating Characters" problem using the sliding window technique. It efficiently finds the length of the longest substring without repeating characters within a given string `s`. Here's how the code works:
 
 1. The `lengthOfLongestSubstring` function takes a string `s` as input and returns an integer representing the length of the longest substring without repeating characters.
 2. It initializes an array `chars` of size 128 to keep track of character occurrences.

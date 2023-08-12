@@ -59,7 +59,7 @@ class Solution {
 }
 ```
 
-The provided Java code is a solution to the "Contains Duplicate" problem. It checks whether there are any duplicate elements in the given integer array `nums`. Here's how the code works:
+The above solution is for the "Contains Duplicate" problem. It checks whether there are any duplicate elements in the given integer array `nums`. Here's how the code works:
 
 1. The `containsDuplicate` function takes an integer array `nums` as input and returns a boolean value indicating whether the array contains any duplicate elements.
 2. It initializes a `Set` named `set` to store encountered elements.

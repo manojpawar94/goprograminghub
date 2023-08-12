@@ -109,7 +109,7 @@ ListNode intermediate = null;
 
 ```
 
-The provided Java code represents a solution for adding two numbers that are represented as linked lists, where each node in the linked list contains a single digit of the number. The solution uses a straightforward approach to iterate through both linked lists and perform the addition, considering the carry value. Here's how the code works:
+The above solution is for adding two numbers that are represented as linked lists, where each node in the linked list contains a single digit of the number. The solution uses a straightforward approach to iterate through both linked lists and perform the addition, considering the carry value. Here's how the code works:
 
 1. The `addTwoNumbers` function takes two linked list inputs `l1` and `l2`, which represent the two numbers to be added.
 2. It initializes variables `carry`, `head`, and `intermediate`.

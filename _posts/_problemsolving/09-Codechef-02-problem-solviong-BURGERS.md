@@ -14,8 +14,8 @@ Find the maximum number of burgers that Chef can make.
 
 ##### Input Format
 
-- The first line of input will contain an integer TT — the number of test cases. The description of T test cases follows.
-- The first and only line of each test case contains two space-separated integers A and B, the number of patties and buns respectively.
+-   The first line of input will contain an integer TT — the number of test cases. The description of T test cases follows.
+-   The first and only line of each test case contains two space-separated integers A and B, the number of patties and buns respectively.
 
 ##### Output Format
 
@@ -23,8 +23,8 @@ For each test case, output the maximum number of burgers that Chef can make.
 
 ##### Constraints
 
-> - 1 ≤ T ≤ 1000
-> - 1 ≤ A, B ≤ 10^5
+> -   1 ≤ T ≤ 1000
+> -   1 ≤ A, B ≤ 10^5
 
 ##### Sample 1:
 
@@ -47,9 +47,7 @@ Test case 3: Chef has 3 patties and 2 buns. Chef can make at most 2 burgers by u
 
 Test case 4: Chef has 23 patties and 17 buns. Chef can make at most 17 burgers by using 17 patties and 17 buns.
 
- 
-
-#### Solution 
+#### Solution
 
 <ul class="nav nav-tabs" id="myTab" role="tablist">
   <li class="nav-item" role="presentation">
@@ -76,10 +74,12 @@ class Codechef {
             System.out.println(patties > buns ? buns : patties);
         }
     }
+
 }
+
 ```
 
-The provided Java code is a solution for the "BURGERS" problem on CodeChef. The problem involves calculating the maximum number of burgers that Chef can make given a certain number of patties and buns. Here's how the code works:
+The above solution is for the "BURGERS" problem on CodeChef. The problem involves calculating the maximum number of burgers that Chef can make given a certain number of patties and buns. Here's how the code works:
 
 1. The `main` method reads the number of test cases (`noOfTc`) from input.
 2. A loop iterates through each test case:
@@ -92,3 +92,4 @@ The solution effectively processes the input test cases and calculates the maxim
 Please note that this code assumes the input follows the provided format and does not include extensive error handling.
 </div>
 </div>
+```

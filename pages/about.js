@@ -35,38 +35,34 @@ export default function About() {
                             presence at GoProgrammingHub.com!
                         </h3>
                         <p className="ps-4 pt-3 text-justify">
-                            I am an ardent software developer, driven by an
-                            insatiable passion for innovation. My professional
-                            journey boasts a rich tapestry of backend
-                            technologies, including GoLang, Gin, Java, Spring
-                            Boot, JPA, and Python. Equally proficient in the
-                            frontend realm, I navigate through Angular, React,
-                            Bootstrap, Material Design Framework, CSS3, and
-                            HTML5 with finesse. In the realm of databases, I
-                            command a versatile skill set spanning Oracle,
-                            MySQL, MongoDB, and Redis.
+                            I am a passionate software developer who thrives on
+                            innovation. My professional journey showcases a
+                            diverse array of backend technologies, including
+                            GoLang, Gin, Java, Spring Boot, JPA, and Python. I'm
+                            equally skilled in frontend technologies, adeptly
+                            navigating Angular, React, Bootstrap, Material
+                            Design Framework, CSS3, and HTML5. My expertise
+                            extends to databases, encompassing Oracle, MySQL,
+                            MongoDB, and Redis.
                         </p>
 
                         <p className="ps-4 text-justify">
-                            The nucleus of GoProgrammingHub.com revolves around
-                            the art of knowledge dissemination and the
-                            orchestration of shared experiences. Fueling my
-                            pursuit is an avid appetite for technical and
-                            non-technical blogs, an avenue through which I draw
-                            inspiration from the captivating narratives crafted
-                            by seasoned bloggers. This wellspring of inspiration
-                            has crystallized into the genesis of
-                            GoProgrammingHub. As its voyage takes flight with a
-                            focus on unraveling the intricacies of the Go
-                            programming language, anticipate a trajectory that
-                            transcends boundaries.
+                            At the core of GoProgrammingHub.com lies the art of
+                            sharing knowledge and creating collective
+                            experiences. My motivation stems from my love for
+                            technical and non-technical blogs, where I find
+                            inspiration from experienced bloggers' compelling
+                            stories. This inspiration has materialized into the
+                            creation of GoProgrammingHub. As the platform
+                            embarks on its journey, focusing on uncovering the
+                            intricacies of the Go programming language, expect a
+                            trajectory that pushes boundaries.
                         </p>
 
                         <p className="ps-4 mt-2 text-justify">
-                            Gratitude flows for your patronage and support
-                            extended to GoProgrammingHub.com. I extend to you my
-                            heartfelt wishes for a journey brimming with
-                            enlightening discoveries and transformative
+                            I want to express my gratitude for your support of
+                            GoProgrammingHub.com. I wish you a journey filled
+                            with enlightening discoveries and transformative
                             learning.
                         </p>
 
