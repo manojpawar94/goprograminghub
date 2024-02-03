@@ -14,6 +14,8 @@ export default function Home({ dsaPosts, problemSolvingPosts }) {
       <Head>
         <title>GoProgrammingHub</title>
         <link rel="icon" href="/favicon.ico" />
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1364948475392350"
+     crossorigin="anonymous"></script>
       </Head>
       <Navbar />
       <main className="container mt-2">
