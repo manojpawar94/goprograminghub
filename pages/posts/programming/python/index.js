@@ -6,14 +6,12 @@ import ArticleCard from "../../../../components/ArticleCard";
 
 import { getAllPosts, getAuthorBySlug } from "../../../../lib/api";
 import Footer from "../../../../components/Footer";
+import AppHead from "../../../../components/AppHead";
 
 export default function Posts({ posts }) {
     return (
         <>
-            <Head>
-                <title>Python | GoProgrammingHub</title>
-                <link rel="icon" href="/favicon.ico" />
-            </Head>
+             <AppHead title={`Python Tutorial`}/>
             <Navbar />
             <main className="container mt-2 pb-4">
                 <SectionHeader

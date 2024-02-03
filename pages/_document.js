@@ -34,6 +34,11 @@ class MyDocument extends Document {
             src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1364948475392350"
             crossorigin="anonymous"
           ></script>
+          <link rel="icon" href="/favicon.ico" />
+          <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Outfit%3Awght%40400%3B500%3B600%3B700%3B900&amp;display=swap"
+          />
         </Head>
         <body>
           <Main />

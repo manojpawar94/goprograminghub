@@ -5,13 +5,13 @@ export default function ArticleCard({ post }) {
     return (
         <article className="card mb-3" key={post.slug}>
             <div className="card-body">
-                <h5 className="card-title text-truncate-container">
+                <h4 className="card-title text-truncate-container">
                     <Link href={post.permalink}>
-                        <a className="text-decoration-none text-dark text-truncate-2">
+                        <a className="text-decoration-none text-dark text-truncate-2 text-primary">
                             {post.title}
                         </a>
                     </Link>
-                </h5>
+                </h4>
                 <ArticleAuthor
                     name={post.author.name}
                     profilePictureUrl={post.author.profilePictureUrl}
