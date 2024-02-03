@@ -1,6 +1,3 @@
-import Image from "next/image";
-import brandLogo from "../public/images/logo.png";
-
 function Navbar() {
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-white ps-4 pe-4 border-bottom ">
