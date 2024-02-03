@@ -13,7 +13,7 @@ export default function Posts({ posts }) {
       <AppHead title={`Golang Tutorial`} />
       <Navbar />
       <main className="container mt-2 pb-4">
-        <SectionHeader title={`Golang Programming`} margin={`mt-2 mb-2`} />
+        <SectionHeader title={`Golang Tutorial`} margin={`mt-2 mb-2`} />
         <div className="row">
           {posts.map((post, index) => (
             <div className="col-md-4 d-flex align-items-stretch" key={index}>

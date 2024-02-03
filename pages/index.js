@@ -4,6 +4,7 @@ import Navbar from "../components/Navbar";
 import { getAllPosts, getAuthorBySlug } from "../lib/api";
 import AppHead from "../components/AppHead";
 import Image from "next/image";
+import ImageBgCard from "../components/ImageBgCard";
 
 export default function Home({ dsaPosts, problemSolvingPosts }) {
   return (
@@ -13,7 +14,7 @@ export default function Home({ dsaPosts, problemSolvingPosts }) {
       <main className="container-fluid">
         <div
           id="carouselExampleCaptions"
-          class="carousel slide"
+          class="carousel slide d-none d-sm-block"
           data-bs-ride="carousel"
         >
           <div class="carousel-indicators">
@@ -48,8 +49,8 @@ export default function Home({ dsaPosts, problemSolvingPosts }) {
                 height="50"
                 layout="responsive"
               />
-              <div class="carousel-caption d-sm-block">
-                <h1 className="mb-4 bg-dark bg-transparent">Golang Tutorial</h1>
+              <div class="carousel-caption d-none d-sm-block">
+                <h1 className="mb-4">Golang Tutorial</h1>
                 <p>
                   <a
                     className="btn btn-primary btn-sm stretched-link"
@@ -69,8 +70,8 @@ export default function Home({ dsaPosts, problemSolvingPosts }) {
                 height="50"
                 layout="responsive"
               />
-              <div class="carousel-caption d-sm-block">
-                <h1 className="mb-4 bg-dark bg-transparent">Python Tutorial</h1>
+              <div class="carousel-caption d-none d-sm-block">
+                <h1 className="mb-4">Python Tutorial</h1>
                 <p>
                   <a
                     className="btn btn-primary btn-sm stretched-link"
@@ -90,8 +91,8 @@ export default function Home({ dsaPosts, problemSolvingPosts }) {
                 height="50"
                 layout="responsive"
               />
-              <div class="carousel-caption d-sm-block">
-                <h1 className="mb-4 bg-dark bg-transparent">Apache Spark Tutorial</h1>
+              <div class="carousel-caption d-none d-sm-block">
+                <h1 className="mb-4">Apache Spark Tutorial</h1>
                 <p>
                   <a
                     className="btn btn-primary btn-sm stretched-link"
@@ -121,6 +122,60 @@ export default function Home({ dsaPosts, problemSolvingPosts }) {
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Next</span>
           </button>
+        </div>
+
+        <div className="row d-block d-sm-none">
+          <div className="col-md-4">
+            <a href="/posts/programming/golang">
+              <ImageBgCard
+                title={`Golang Tutorial`}
+                bgImageUrl={`/images/golang-bg.jpg`}
+                content={
+                  <a
+                    className="btn btn-primary btn-sm stretched-link"
+                    href="/posts/programming/golang"
+                  >
+                    Open
+                  </a>
+                }
+                height="180px"
+              />
+            </a>
+          </div>
+          <div className="col-md-4">
+            <a href="/posts/programming/python">
+              <ImageBgCard
+                title={`Python Tutorial`}
+                bgImageUrl={`/images/python-bg.png`}
+                content={
+                  <a
+                    className="btn btn-primary btn-sm stretched-link"
+                    href="/posts/programming/python/01-Introduction-to-Python"
+                  >
+                    Open
+                  </a>
+                }
+                height="180px"
+              />
+            </a>
+          </div>
+          <div className="col-md-4">
+            <a href="/posts/bigdata/apache-spark">
+              <ImageBgCard
+                title={`Apache Spark Tutorial`}
+                bgImageUrl={`/images/apaches-spark-bg.webp`}
+                content={
+                  <a
+                    className="btn btn-primary btn-sm stretched-link"
+                    href="/posts/bigdata/apache-spark/01-introduction-to-apache-spark"
+                  >
+                    Open
+                  </a>
+                }
+                height="180px"
+              />
+            </a>
+          </div>
         </div>
       </main>
       <Footer />

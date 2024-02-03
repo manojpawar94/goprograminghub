@@ -10,10 +10,10 @@ import AppHead from "../../../components/AppHead";
 export default function Posts({ posts }) {
   return (
     <>
-      <AppHead title={`Problem Solving Skills`} />
+      <AppHead title={`Problem Solving`} />
       <Navbar />
       <main className="container mt-2 pb-4">
-        <SectionHeader title={`Problem Solving`} margin={`mt-2 mb-2`} />
+        <SectionHeader title={`Problem Solving Examples`} margin={`mt-2 mb-2`} />
         <div className="row">
           {posts.map((post, index) => (
             <div className="col-md-4 d-flex align-items-stretch" key={index}>

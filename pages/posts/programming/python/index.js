@@ -15,7 +15,7 @@ export default function Posts({ posts }) {
             <Navbar />
             <main className="container mt-2 pb-4">
                 <SectionHeader
-                    title={`Python Programming`}
+                    title={`Python Tutorial`}
                     margin={`mt-2 mb-2`}
                 />
                 <div className="row">
