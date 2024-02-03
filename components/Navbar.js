@@ -25,26 +25,17 @@ function Navbar() {
               </a>
             </li>
             <li className="nav-item">
-              <a className="nav-link d-none d-sm-block" href="/posts/programming/golang/01-Introduction-to-Go-Language">
-                GOLANG
-              </a>
-              <a className="nav-link d-block .d-sm-none" href="/posts/programming/golang">
+              <a className="nav-link" href="/posts/programming/golang">
                 GOLANG
               </a>
             </li>
             <li className="nav-item">
-              <a className="nav-link d-none d-sm-block" href="/posts/programming/python/01-Introduction-to-Python">
-                PYTHON
-              </a>
-              <a className="nav-link d-block .d-sm-none" href="/posts/programming/python">
+              <a className="nav-link" href="/posts/programming/python">
                 PYTHON
               </a>
             </li>
             <li className="nav-item">
-              <a className="nav-link d-none d-sm-block"  href="/posts/bigdata/apache-spark/01-introduction-to-apache-spark">
-               APACHE SPARK
-              </a>
-              <a className="nav-link d-block .d-sm-none"  href="/posts/bigdata/apache-spark">
+              <a className="nav-link"  href="/posts/bigdata/apache-spark">
                APACHE SPARK
               </a>
             </li>
