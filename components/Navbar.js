@@ -35,6 +35,11 @@ function Navbar() {
               </a>
             </li>
             <li className="nav-item">
+              <a className="nav-link" href="/posts/programming/scala">
+                SCALA
+              </a>
+            </li>
+            <li className="nav-item">
               <a className="nav-link"  href="/posts/bigdata/apache-spark">
                APACHE SPARK
               </a>

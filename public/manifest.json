@@ -1,0 +1,32 @@
+{
+  "theme_color": "#000",
+  "background_color": "#fff",
+  "display": "standalone",
+  "scope": "/",
+  "start_url": "/",
+  "name": "GoProgrammingHub",
+  "short_name": "GPH",
+  "description": "GoProgrammingHub is a progrograming tutorial app.",
+  "icons": [
+    {
+      "src": "image/manoj-pawar.jpg",
+      "sizes": "192x192",
+      "type": "image/jpg"
+    },
+    {
+      "src": "image/manoj-pawar.jpg",
+      "sizes": "256x256",
+      "type": "image/jpg"
+    },
+    {
+      "src": "image/manoj-pawar.jpg",
+      "sizes": "384x384",
+      "type": "image/jpg"
+    },
+    {
+      "src": "image/manoj-pawar.jpg",
+      "sizes": "512x512",
+      "type": "image/jpg"
+    }
+  ]
+}

@@ -39,13 +39,13 @@ Output: [1,2]
 
 #### Solution
 
-<ul class="nav nav-tabs" id="myTab" role="tablist">
-  <li class="nav-item" role="presentation">
-    <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">Java</button>
+<ul className="nav nav-tabs" id="myTab" role="tablist">
+  <li className="nav-item" role="presentation">
+    <button className="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">Java</button>
   </li>
 </ul>
-<div class="tab-content" id="myTabContent">
-  <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+<div className="tab-content" id="myTabContent">
+  <div className="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
   
   ```java[class="line-numbers"]
 class Solution {

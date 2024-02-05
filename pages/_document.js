@@ -32,7 +32,7 @@ class MyDocument extends Document {
           <script
             async
             src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1364948475392350"
-            crossorigin="anonymous"
+            crossOrigin="anonymous"
           ></script>
           <link rel="icon" href="/favicon.ico" />
           <link

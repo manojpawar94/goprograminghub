@@ -14,15 +14,15 @@ export default function Home({ dsaPosts, problemSolvingPosts }) {
       <main className="container-fluid">
         <div
           id="carouselExampleCaptions"
-          class="carousel slide d-none d-sm-block"
+          className="carousel slide d-none d-sm-block"
           data-bs-ride="carousel"
         >
-          <div class="carousel-indicators">
+          <div className="carousel-indicators">
             <button
               type="button"
               data-bs-target="#carouselExampleCaptions"
               data-bs-slide-to="0"
-              class="active"
+              className="active"
               aria-current="true"
               aria-label="Slide 1"
             ></button>
@@ -39,8 +39,8 @@ export default function Home({ dsaPosts, problemSolvingPosts }) {
               aria-label="Slide 3"
             ></button>
           </div>
-          <div class="carousel-inner">
-            <div class="carousel-item active">
+          <div className="carousel-inner">
+            <div className="carousel-item active">
               <Image
                 className="d-block w-100"
                 alt={`Golang Tutorial`}
@@ -49,7 +49,7 @@ export default function Home({ dsaPosts, problemSolvingPosts }) {
                 height="50"
                 layout="responsive"
               />
-              <div class="carousel-caption d-none d-sm-block">
+              <div className="carousel-caption d-none d-sm-block">
                 <h1 className="mb-4">Golang Tutorial</h1>
                 <p>
                   <a
@@ -61,7 +61,7 @@ export default function Home({ dsaPosts, problemSolvingPosts }) {
                 </p>
               </div>
             </div>
-            <div class="carousel-item">
+            <div className="carousel-item">
               <Image
                 className="d-block w-100"
                 alt={`Python Tutorial`}
@@ -70,7 +70,7 @@ export default function Home({ dsaPosts, problemSolvingPosts }) {
                 height="50"
                 layout="responsive"
               />
-              <div class="carousel-caption d-none d-sm-block">
+              <div className="carousel-caption d-none d-sm-block">
                 <h1 className="mb-4">Python Tutorial</h1>
                 <p>
                   <a
@@ -82,7 +82,7 @@ export default function Home({ dsaPosts, problemSolvingPosts }) {
                 </p>
               </div>
             </div>
-            <div class="carousel-item">
+            <div className="carousel-item">
               <Image
                 className="d-block w-100"
                 alt={`Apache Spark Tutorial`}
@@ -91,7 +91,7 @@ export default function Home({ dsaPosts, problemSolvingPosts }) {
                 height="50"
                 layout="responsive"
               />
-              <div class="carousel-caption d-none d-sm-block">
+              <div className="carousel-caption d-none d-sm-block">
                 <h1 className="mb-4">Apache Spark Tutorial</h1>
                 <p>
                   <a
@@ -105,22 +105,22 @@ export default function Home({ dsaPosts, problemSolvingPosts }) {
             </div>
           </div>
           <button
-            class="carousel-control-prev"
+            className="carousel-control-prev"
             type="button"
             data-bs-target="#carouselExampleCaptions"
             data-bs-slide="prev"
           >
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
+            <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span className="visually-hidden">Previous</span>
           </button>
           <button
-            class="carousel-control-next"
+            className="carousel-control-next"
             type="button"
             data-bs-target="#carouselExampleCaptions"
             data-bs-slide="next"
           >
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
+            <span className="carousel-control-next-icon" aria-hidden="true"></span>
+            <span className="visually-hidden">Next</span>
           </button>
         </div>
 
@@ -131,12 +131,12 @@ export default function Home({ dsaPosts, problemSolvingPosts }) {
                 title={`Golang Tutorial`}
                 bgImageUrl={`/images/golang-bg.jpg`}
                 content={
-                  <a
+                  <button
                     className="btn btn-primary btn-sm stretched-link"
                     href="/posts/programming/golang"
                   >
                     Open
-                  </a>
+                  </button>
                 }
                 height="180px"
               />
@@ -148,12 +148,12 @@ export default function Home({ dsaPosts, problemSolvingPosts }) {
                 title={`Python Tutorial`}
                 bgImageUrl={`/images/python-bg.png`}
                 content={
-                  <a
+                  <button
                     className="btn btn-primary btn-sm stretched-link"
                     href="/posts/programming/python/01-Introduction-to-Python"
                   >
                     Open
-                  </a>
+                  </button>
                 }
                 height="180px"
               />
@@ -165,12 +165,12 @@ export default function Home({ dsaPosts, problemSolvingPosts }) {
                 title={`Apache Spark Tutorial`}
                 bgImageUrl={`/images/apaches-spark-bg.webp`}
                 content={
-                  <a
+                  <button
                     className="btn btn-primary btn-sm stretched-link"
                     href="/posts/bigdata/apache-spark/01-introduction-to-apache-spark"
                   >
                     Open
-                  </a>
+                  </button>
                 }
                 height="180px"
               />

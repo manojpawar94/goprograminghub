@@ -49,13 +49,13 @@ Test case 4: Chef has 23 patties and 17 buns. Chef can make at most 17 burgers b
 
 #### Solution
 
-<ul class="nav nav-tabs" id="myTab" role="tablist">
-  <li class="nav-item" role="presentation">
-    <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">Java</button>
+<ul className="nav nav-tabs" id="myTab" role="tablist">
+  <li className="nav-item" role="presentation">
+    <button className="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">Java</button>
   </li>
 </ul>
-<div class="tab-content" id="myTabContent">
-  <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+<div className="tab-content" id="myTabContent">
+  <div className="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
   
   ```java[class="line-numbers"]
 import java.util.Scanner;
