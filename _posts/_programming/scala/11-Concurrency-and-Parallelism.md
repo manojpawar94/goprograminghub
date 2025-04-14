@@ -7,23 +7,59 @@ author: "manoj-pawar"
 
 ## Futures and Promises
 
-Futures and Promises are used for asynchronous programming in Scala.
+Futures represent asynchronous computations that may complete at some point in the future. They are read-only views of a value that may not yet exist. Promises are writable, single-assignment containers that complete a Future.
+
+Key characteristics:
+
+- Non-blocking by default
+- Composable with map, flatMap, and other combinators
+- Support for error handling through onComplete
+
+### Basic Example
 
 ```scala
 import scala.concurrent.Future
 import scala.concurrent.ExecutionContext.Implicits.global
 import scala.util.{Success, Failure}
 
+// Creating a Future
 val future = Future {
-  // Long-running computation
+  // Simulate long computation
   Thread.sleep(1000)
   1 + 1
 }
 
+// Handling the result
 future.onComplete {
-  case Success(result) => println(s"Result: $result")
-  case Failure(e) => println(s"Error: ${e.getMessage}")
+  case Success(result) => println(s"Computation result: $result")
+  case Failure(e) => println(s"Computation failed: ${e.getMessage}")
 }
+
+// Alternative: Using foreach for success cases
+future.foreach(result => println(s"Result available: $result"))
+```
+
+### Composing Futures
+
+```scala
+// Chaining Futures
+val combined = future.flatMap { firstResult =>
+  Future {
+    Thread.sleep(500)
+    firstResult * 2
+  }
+}
+
+// Parallel execution
+val future1 = Future { Thread.sleep(300); 10 }
+val future2 = Future { Thread.sleep(400); 20 }
+
+val sumFuture = for {
+  a <- future1
+  b <- future2
+} yield a + b
+
+sumFuture.foreach(println)
 ```
 
 ## Async Programming
@@ -76,4 +112,9 @@ import scala.concurrent.duration._
 import scala.concurrent.ExecutionContext.Implicits.global
 
 implicit val timeout = Timeout(5 seconds)
-val
+val future = (myActor ? "World").mapTo[String]
+future.onComplete {
+  case Success(result) => println(s"Result: $result")
+  case Failure(e) => println(s"Error: ${e.getMessage}")
+}
+```
