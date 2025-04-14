@@ -9,13 +9,13 @@ author: manoj-pawar
 
 Welcome to Control Structures tutorial! Here, we're going to explore the magical world of control structures - tools that allow you to guide your program's journey. Think of these as road signs and detours that help you steer your code exactly where you want it to go. We'll cover loops, which are like repeating patterns, and conditional statements, which help your program make decisions.
 
-#### Looping Through Possibilities
+#### Understanding Loops in Go
 
-Imagine you're drawing a pattern, and you want to repeat it. Loops are just like that – they let you repeat a set of actions over and over.
+Go simplifies looping with a single versatile `for` loop that can be used in multiple ways. Let's explore each variation:
 
-**Example 1 - The "for" Loop:**
+##### 1. Traditional C-style For Loop
 
-The "for" loop is commonly used to iterate over a range of values.
+This is the classic three-component loop with initialization, condition, and increment:
 
 ```go[class="line-numbers"]
 package main
@@ -23,86 +23,61 @@ package main
 import "fmt"
 
 func main() {
-    // Let's count from 1 to 5
-    for i := 1; i <= 5; i++ {
-        fmt.Println(i)
+    // Print multiplication table of 5
+    for i := 1; i <= 10; i++ {
+        result := 5 * i
+        fmt.Printf("5 x %d = %d\n", i, result)
     }
 }
 ```
 
-**Example 2 - The "while" Loop:**
+Key components:
+- Initialization: `i := 1`
+- Condition: `i <= 10`
+- Increment: `i++`
 
-In Go, you can achieve a "while" loop using the "for" loop with a single condition.
+##### 2. While-style Loop
 
-```go[class="line-numbers"]
-package main
-
-import "fmt"
-
-func main() {
-    // Keep rolling the dice until you get a 6
-    dice := 0
-    for dice != 6 {
-        dice = rollDice()
-        fmt.Println("Rolled:", dice)
-    }
-}
-
-func rollDice() int {
-    // Simulate rolling a 6-sided dice
-    return 1 // For simplicity, always return 1 in this example
-}
-```
-
-**Example 3: The "for range" Loop**
-
-This loop is used to iterate over elements in a collection, like arrays, slices, maps, and strings.
+Go doesn't have a `while` keyword, but you can create while-style loops using `for` with a condition:
 
 ```go[class="line-numbers"]
 package main
 
-import "fmt"
+import (
+    "fmt"
+    "math/rand"
+    "time"
+)
 
 func main() {
-    fruits := []string{"apple", "banana", "cherry", "date"}
-
-    // Print each fruit
-    for index, fruit := range fruits {
-        fmt.Printf("Fruit at index %d: %s\n", index, fruit)
-    }
-}
-```
-
-**Example 4: Infinite Loop**
-
-An infinite loop continues running until explicitly interrupted or a break statement is used.
-
-```go[class="line-numbers"]
-package main
-
-import "fmt"
-
-func main() {
-    count := 0
-    for {
-        fmt.Println("This will run forever!")
-        count++
-        if count >= 5 {
-            break // Exit the loop after 5 iterations
+    // Guess the number game
+    rand.Seed(time.Now().UnixNano())
+    target := rand.Intn(10) + 1
+    attempts := 0
+    
+    for attempts < 3 {
+        guess := rand.Intn(10) + 1
+        attempts++
+        
+        fmt.Printf("Attempt %d: Guessed %d\n", attempts, guess)
+        
+        if guess == target {
+            fmt.Println("Found the number!")
+            break
         }
     }
+    fmt.Printf("Game over. The number was: %d\n", target)
 }
 ```
 
-These examples showcase the flexibility and power of loops in GoLang. They allow you to perform repetitive tasks efficiently and control the flow of your program with precision.
+This example demonstrates:
+- Single condition loop
+- Using `break` to exit early
+- Random number generation
 
-#### Making Choices with Conditionals using IF statement
+##### 3. For-Range Loop
 
-Just like in real life, your program sometimes needs to make decisions. Conditional statements help your program decide what to do based on certain conditions.
-
-**Example 1 - The "if" Statement:**
-
-The if statement is used to execute a block of code if a certain condition is true. If the condition is not true, the code block is skipped.
+The `for range` loop is perfect for iterating over collections. Let's explore different use cases:
 
 ```go[class="line-numbers"]
 package main
@@ -110,70 +85,194 @@ package main
 import "fmt"
 
 func main() {
-    age := 18
+    // 1. Iterating over a slice
+    fruits := []string{"apple", "banana", "cherry"}
+    fmt.Println("Fruits:")
+    for i, fruit := range fruits {
+        fmt.Printf("%d: %s\n", i+1, fruit)
+    }
 
-    if age >= 18 {
-        fmt.Println("You are an adult.")
+    // 2. Iterating over a map
+    scores := map[string]int{
+        "Alice": 95,
+        "Bob":   87,
+        "Carol": 92,
+    }
+    fmt.Println("\nExam Scores:")
+    for name, score := range scores {
+        fmt.Printf("%s scored %d\n", name, score)
+    }
+
+    // 3. Iterating over a string (by rune)
+    word := "Hello!"
+    fmt.Println("\nCharacters in 'Hello!':")
+    for i, char := range word {
+        fmt.Printf("Position %d: %c\n", i, char)
     }
 }
 ```
 
-In this example, if the age variable is 18 or greater, the message "You are an adult." will be printed.
+##### 4. Infinite Loop with Control Statements
 
-**Example 2 - The "if" and "else" Statement:**
-
-The else statement is used in conjunction with if to provide an alternative block of code that is executed when the condition is false.
+Infinite loops can be controlled using `break`, `continue`, and labels:
 
 ```go[class="line-numbers"]
 package main
 
-import "fmt"
+import (
+    "fmt"
+    "time"
+)
 
 func main() {
-    age := 18
-    if age >= 18 {
-        fmt.Println("You can vote!")
+    start := time.Now()
+    count := 0
+
+OuterLoop:
+    for {
+        count++
+        
+        switch count {
+        case 2:
+            fmt.Println("Skipping iteration 2")
+            continue // Skip to next iteration
+        case 5:
+            fmt.Println("Breaking the loop")
+            break OuterLoop // Exit the labeled loop
+        }
+
+        fmt.Printf("Iteration %d\n", count)
+        time.Sleep(time.Millisecond * 500)
+    }
+
+    elapsed := time.Since(start)
+    fmt.Printf("\nLoop ran for %.2f seconds\n", elapsed.Seconds())
+}
+```
+
+Key concepts demonstrated:
+- Using `range` with different data structures
+- Map iteration (unordered by design)
+- String iteration by Unicode characters
+- Loop labels for controlled breaks
+- `continue` for skipping iterations
+- Time tracking in loops
+
+These examples showcase Go's powerful and flexible looping mechanisms. Whether you're working with collections, strings, or need precise control flow, Go's loops provide the tools you need.
+
+#### Making Decisions with Conditional Statements
+
+Conditional statements are the decision-makers in your code. Let's explore different ways to make decisions in Go:
+
+##### 1. Basic If Statement with Initialization
+
+Go allows you to initialize a variable as part of the if statement:
+
+```go[class="line-numbers"]
+package main
+
+import (
+    "fmt"
+    "time"
+)
+
+func main() {
+    // Initialize and check in one line
+    if hour := time.Now().Hour(); hour < 12 {
+        fmt.Println("Good morning!")
+    } else if hour < 17 {
+        fmt.Println("Good afternoon!")
     } else {
-        fmt.Println("You can't vote yet.")
+        fmt.Println("Good evening!")
     }
+    // Note: 'hour' is not accessible here
 }
 ```
 
-In this example, if the age variable is less than 18, the message "You can't vote yet." will be printed.
+Key features:
+- Variable initialization in if statement
+- Multiple conditions with else-if
+- Scoped variables (hour is only available within the if-else blocks)
 
-**Example 3 - The "if", "else if", and "else" Statements:**
+##### 2. Error Handling Pattern
 
-You can also chain multiple conditions together using `else if` statements to handle different cases.
+Go's if statements are commonly used for error handling:
 
 ```go[class="line-numbers"]
 package main
 
-import "fmt"
+import (
+    "fmt"
+    "strconv"
+)
 
 func main() {
-    score := 85
-
-    if score >= 90 {
-        fmt.Println("Excellent!")
-    } else if score >= 70 {
-        fmt.Println("Good job!")
+    userInput := "42"
+    
+    // Convert string to integer and handle errors
+    if num, err := strconv.Atoi(userInput); err == nil {
+        fmt.Printf("Successfully converted '%s' to %d\n", userInput, num)
+        
+        if num%2 == 0 {
+            fmt.Println("It's an even number")
+        } else {
+            fmt.Println("It's an odd number")
+        }
     } else {
-        fmt.Println("You can do better.")
+        fmt.Printf("Error converting '%s': %v\n", userInput, err)
     }
 }
 ```
 
-In this example, depending on the score value, different messages will be printed.
+##### 3. Complex Conditions and Logical Operators
 
-Conditional statements are fundamental for controlling the flow of your program based on different situations. They allow you to create responsive and dynamic behavior in your code.
+Go supports combining multiple conditions using logical operators:
 
-#### Making Choices with Conditionals using SWITCH statement
+```go[class="line-numbers"]
+package main
 
-The switch statement is a powerful way to create a branching mechanism in your code based on the value of an expression. It provides an elegant alternative to long chains of if and else if statements. Here's how it works:
+import (
+    "fmt"
+    "time"
+)
 
-**Example1 - The "switch" Statement:**
+func main() {
+    // Complex condition example: Online Store Discount
+    isPremiumMember := true
+    purchaseAmount := 120.0
+    isWeekend := time.Now().Weekday() == time.Saturday || time.Now().Weekday() == time.Sunday
+    
+    if isPremiumMember && purchaseAmount >= 100 {
+        fmt.Println("Premium member discount: 20% off")
+        fmt.Printf("Final amount: $%.2f\n", purchaseAmount * 0.8)
+    } else if !isWeekend && purchaseAmount >= 50 {
+        fmt.Println("Weekday special: 10% off")
+        fmt.Printf("Final amount: $%.2f\n", purchaseAmount * 0.9)
+    } else if purchaseAmount >= 30 {
+        fmt.Println("Standard discount: 5% off")
+        fmt.Printf("Final amount: $%.2f\n", purchaseAmount * 0.95)
+    } else {
+        fmt.Println("No discount applicable")
+        fmt.Printf("Final amount: $%.2f\n", purchaseAmount)
+    }
+}
+```
 
-The switch statement compares an expression to a set of possible values and executes the code block associated with the matching value.
+This example demonstrates:
+- Logical AND (&&) and OR (||) operators
+- Multiple conditions in if statements
+- Real-world business logic implementation
+- Formatted number output
+
+Conditional statements are powerful tools for implementing business logic and creating dynamic, responsive programs. They help your code make smart decisions based on various factors and conditions.
+
+#### Switch Statements: Elegant Decision Making
+
+Switch statements provide a clean and efficient way to handle multiple conditions. Let's explore different ways to use switch in Go:
+
+##### 1. Basic Switch Statement
+
+The classic switch statement evaluates an expression against multiple cases:
 
 ```go[class="line-numbers"]
 package main
@@ -181,23 +280,25 @@ package main
 import "fmt"
 
 func main() {
-    day := "Monday"
-    switch day {
-    case "Monday":
-        fmt.Println("It's the start of the week.")
-    case "Friday":
-        fmt.Println("Weekend is near!")
+    // HTTP Status Code Handler
+    statusCode := 404
+    
+    switch statusCode {
+    case 200:
+        fmt.Println("OK - Request successful")
+    case 404:
+        fmt.Println("Not Found - Resource unavailable")
+    case 500:
+        fmt.Println("Internal Server Error - Something went wrong")
     default:
-        fmt.Println("Just another day.")
+        fmt.Printf("Unknown status code: %d\n", statusCode)
     }
 }
 ```
 
-In this example, the value of day is compared with different cases. If it matches the value "Monday", the message "It's the start of the week." will be printed. If it matches "Friday", the message "Weekend is near!" will be printed. If none of the cases match, the default case will be executed.
+##### 2. Switch with Multiple Cases
 
-**Example 2 - Expressions in Cases:**
-
-The cases in a switch statement don't have to be just constants; they can also be expressions.
+You can group multiple cases and use special keywords like `fallthrough`:
 
 ```go[class="line-numbers"]
 package main
@@ -205,47 +306,67 @@ package main
 import "fmt"
 
 func main() {
-    score := 85
+    // File type checker
+    filename := "document.pdf"
+    
+    switch ext := filename[len(filename)-4:]; ext {
+    case ".jpg", ".png", ".gif":
+        fmt.Println("Image file")
+    case ".doc", ".pdf":
+        fmt.Println("Document file")
+        fallthrough // Demonstrates fallthrough
+    case ".txt":
+        fmt.Println("Can be opened in text editor")
+    default:
+        fmt.Println("Unknown file type")
+    }
+}
+```
 
+Key features:
+- Multiple values per case
+- Initialization in switch statement
+- Fallthrough behavior
+- String manipulation
+
+##### 3. Switch without Expression
+
+A switch without an expression can replace complex if-else chains:
+
+```go[class="line-numbers"]
+package main
+
+import (
+    "fmt"
+    "time"
+)
+
+func main() {
+    // Time-based greeting with activity suggestion
+    hour := time.Now().Hour()
+    
     switch {
-    case score >= 90:
-        fmt.Println("Excellent!")
-    case score >= 70:
-        fmt.Println("Good job!")
+    case hour < 6:
+        fmt.Println("Good night! Time for some rest.")
+    case hour < 12:
+        fmt.Println("Good morning! Perfect time for exercise.")
+    case hour < 14:
+        fmt.Println("Good day! Time for lunch.")
+    case hour < 17:
+        fmt.Println("Good afternoon! Stay productive.")
+    case hour < 22:
+        fmt.Println("Good evening! Time to relax.")
     default:
-        fmt.Println("You can do better.")
+        fmt.Println("Time to prepare for bed!")
     }
 }
 ```
 
-In this example, the switch statement doesn't have an expression to compare. Instead, it evaluates the conditions in each case and executes the code block associated with the first condition that is true.
+Key features of Go's switch statements:
+- No need for break statements (automatic break)
+- Cases can be expressions
+- Type switches for type checking
+- Fallthrough for exceptional cases
+- Clean and readable alternative to if-else chains
 
-**Example 3 - Fallthrough:**
-
-By default, in GoLang, the `switch` statement only executes the code block associated with the first matching case. However, if you use the `fallthrough` keyword at the end of a case, the code execution will fall through to the next case.
-
-```go[class="line-numbers"]
-package main
-
-import "fmt"
-
-func main() {
-    num := 2
-
-    switch num {
-    case 1:
-        fmt.Println("It's one.")
-        fallthrough
-    case 2:
-        fmt.Println("It's two.")
-    case 3:
-        fmt.Println("It's three.")
-    }
-}
-```
-
-In this example, when num is 2, the message "It's one." will be printed, and then the execution will fall through to the next case, printing "It's two."
-
-The switch statement is a versatile tool that allows you to create clean and concise code for handling multiple cases based on the value of an expression.
-
-By the end of this tutorial, you'll have the power to create loops that repeat actions and make your program choose different paths based on conditions. Control structures are your tools for orchestrating the dance of your code, ensuring it follows your lead to achieve remarkable outcomes!
+By mastering control structures, you can create dynamic and efficient programs that respond intelligently to different conditions and requirements. Whether you're using loops for repetition or conditionals for decision-making, Go provides the tools you need to write clean and effective code. Keep practicing and exploring these concepts! 🚀

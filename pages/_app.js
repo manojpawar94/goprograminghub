@@ -1,14 +1,25 @@
-import "bootstrap/dist/css/bootstrap.css";
-import "bootstrap-icons/font/bootstrap-icons.json";
 import "../styles/globals.css";
-import { useEffect } from "react";
+import ThemeProvider from "../components/ThemeProvider";
+import { CacheProvider } from "@emotion/react";
+import createCache from "@emotion/cache";
+import { CssBaseline } from "@mui/material";
 
-function GoProgrammingHubApp({ Component, pageProps }) {
-  useEffect(() => {
-    import("bootstrap/dist/js/bootstrap.bundle");
-  }, []);
+// Create a client-side emotion cache
+const clientSideEmotionCache = createCache({ key: "css" });
 
-  return <Component {...pageProps} />;
+function GoProgrammingHubApp({
+  Component,
+  pageProps,
+  emotionCache = clientSideEmotionCache,
+}) {
+  return (
+    <CacheProvider value={emotionCache}>
+      <ThemeProvider>
+        <CssBaseline />
+        <Component {...pageProps} />
+      </ThemeProvider>
+    </CacheProvider>
+  );
 }
 
 export default GoProgrammingHubApp;

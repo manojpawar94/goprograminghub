@@ -1,59 +1,74 @@
 ---
-title: "Concurrency"
-excerpt: "Understand Go's unique approach to concurrency through goroutines and channels. Learn how to create concurrent programs that leverage the full power of modern hardware.
-"
+title: "Concurrency in Go"
+excerpt: "Master Go's powerful concurrency features with goroutines, channels, and synchronization patterns. Learn to build efficient concurrent programs with practical examples and best practices."
 createdAt: "2021-05-03"
 author: manoj-pawar
 ---
 
-> Harnessing Concurrency with Goroutines and Channels in Go
+> Building Robust Concurrent Applications with Go
 
-Welcome to Concurrency Tutorial! In this chapter, we're going to delve into the fascinating world of concurrency in Go programming. Go's approach to concurrency is unique and powerful, utilizing goroutines and channels to enable efficient parallelism. By the end of this chapter, you'll not only comprehend the fundamentals of concurrency but also learn how to create highly efficient concurrent programs using goroutines and channels.
+Welcome to our comprehensive guide on Go concurrency! Go's approach to concurrent programming is revolutionary, offering powerful primitives like goroutines and channels that make it easier to write efficient, concurrent programs. In this tutorial, we'll explore these concepts with practical examples and best practices.
 
-#### Unveiling Goroutines - The Building Blocks of Concurrency
+#### Understanding Goroutines: Lightweight Concurrent Execution
 
-Imagine you're multitasking - cooking, answering emails, and reading a book all at once. Goroutines in Go are like these parallel tasks, allowing you to execute multiple functions concurrently.
+Goroutines are Go's lightweight threads that allow concurrent execution. They're incredibly efficient, with minimal startup costs and minimal memory footprint (starting at just 2KB of stack space).
 
-**Example 1: Creating and Running Goroutines**
+**Example 1: Goroutines with WaitGroup Synchronization**
 
 ```go[class="line-numbers"]
 package main
 
 import (
     "fmt"
+    "sync"
     "time"
 )
 
-func printNumbers() {
+func printNumbers(wg *sync.WaitGroup) {
+    defer wg.Done() // Notify WaitGroup when the function completes
+    
     for i := 1; i <= 5; i++ {
-        fmt.Println("Number:", i)
-        time.Sleep(time.Millisecond * 500) // Introduce a delay
+        fmt.Printf("Number: %d (Time: %s)\n", i, time.Now().Format("15:04:05.000"))
+        time.Sleep(time.Millisecond * 500)
     }
 }
 
-func printLetters() {
+func printLetters(wg *sync.WaitGroup) {
+    defer wg.Done() // Notify WaitGroup when the function completes
+    
     for char := 'a'; char <= 'e'; char++ {
-        fmt.Println("Letter:", string(char))
-        time.Sleep(time.Millisecond * 300) // Introduce a delay
+        fmt.Printf("Letter: %c (Time: %s)\n", char, time.Now().Format("15:04:05.000"))
+        time.Sleep(time.Millisecond * 300)
     }
 }
 
 func main() {
-    go printNumbers() // Start a goroutine for printNumbers
-    go printLetters() // Start a goroutine for printLetters
-
-    // Wait for a while to see the output
-    time.Sleep(time.Second * 3)
+    var wg sync.WaitGroup // Create a WaitGroup to synchronize goroutines
+    
+    // Add two tasks to the WaitGroup
+    wg.Add(2)
+    
+    fmt.Println("Starting concurrent execution...")
+    go printNumbers(&wg) // Launch first goroutine
+    go printLetters(&wg) // Launch second goroutine
+    
+    // Wait for both goroutines to complete
+    wg.Wait()
+    fmt.Println("All goroutines completed!")
 }
 ```
 
-In this example, the `printNumbers` and `printLetters` functions are executed concurrently using goroutines. The `go` keyword is used to start goroutines. As a result, the numbers and letters are printed interleaved due to the concurrent execution.
+This enhanced example demonstrates several important concepts:
+1. **WaitGroup Synchronization**: Instead of using `time.Sleep()`, we properly synchronize goroutines using `sync.WaitGroup`
+2. **Timestamp Output**: Added timestamps to visualize concurrent execution
+3. **Deferred Cleanup**: Using `defer` to ensure `WaitGroup` is properly updated
+4. **Structured Output**: Better formatting for clearer understanding of execution flow
 
-#### Synchronizing Goroutines with Channels
+#### Channel Types and Patterns in Go
 
-Imagine you're coordinating a team of chefs in a restaurant kitchen. Channels in Go are like communication pathways that enable synchronization and data sharing between goroutines.
+Channels are Go's built-in communication mechanism for goroutines. Let's explore different types of channels and common patterns.
 
-**Example 2: Using Channels for Communication**
+**Example 2: Buffered vs Unbuffered Channels**
 
 ```go[class="line-numbers"]
 package main
@@ -63,47 +78,127 @@ import (
     "time"
 )
 
-func sendGreetings(channel chan string, message string) {
-    channel <- message // Send message to the channel
+func processMessages(done chan bool) {
+    // Buffered channel with capacity 2
+    bufferedChan := make(chan string, 2)
+    
+    // Unbuffered channel
+    unbufferedChan := make(chan string)
+    
+    // Demonstrate buffered channel behavior
+    go func() {
+        fmt.Println("Sending to buffered channel...")
+        bufferedChan <- "First"  // Won't block
+        bufferedChan <- "Second" // Won't block
+        fmt.Println("Buffered channel sends completed!")
+        
+        // Reading from buffered channel
+        fmt.Printf("Received from buffered: %s\n", <-bufferedChan)
+        fmt.Printf("Received from buffered: %s\n", <-bufferedChan)
+    }()
+    
+    // Demonstrate unbuffered channel behavior
+    go func() {
+        fmt.Println("Sending to unbuffered channel...")
+        unbufferedChan <- "Message" // Will block until received
+        fmt.Println("Unbuffered send completed!")
+    }()
+    
+    time.Sleep(time.Millisecond * 100) // Give time for goroutine to start
+    fmt.Printf("Received from unbuffered: %s\n", <-unbufferedChan)
+    
+    done <- true
 }
 
 func main() {
-    greetingsChannel := make(chan string) // Create a channel
-
-    go sendGreetings(greetingsChannel, "Hello!")
-    go sendGreetings(greetingsChannel, "Bonjour!")
-    go sendGreetings(greetingsChannel, "Hola!")
-
-    // Receive and print messages from the channel
-    fmt.Println(<-greetingsChannel)
-    fmt.Println(<-greetingsChannel)
-    fmt.Println(<-greetingsChannel)
+    done := make(chan bool)
+    go processMessages(done)
+    <-done // Wait for processing to complete
 }
 ```
 
-In this example, the `sendGreetings` function sends messages to the `greetingsChannel` using the `channel <-` syntax. In the `main()` function, we receive and print messages from the channel using the `<-channel` syntax.
+**Example 3: Select Statement for Channel Operations**
 
-#### Leveraging Concurrency for Efficiency
+```go[class="line-numbers"]
+func handleMultipleChannels(done chan bool) {
+    ch1 := make(chan string)
+    ch2 := make(chan string)
+    
+    // Sender goroutines
+    go func() {
+        time.Sleep(time.Millisecond * 100)
+        ch1 <- "Message from channel 1"
+    }()
+    
+    go func() {
+        time.Sleep(time.Millisecond * 50)
+        ch2 <- "Message from channel 2"
+    }()
+    
+    // Use select to handle multiple channels
+    for i := 0; i < 2; i++ {
+        select {
+        case msg1 := <-ch1:
+            fmt.Println("Received:", msg1)
+        case msg2 := <-ch2:
+            fmt.Println("Received:", msg2)
+        case <-time.After(time.Second):
+            fmt.Println("Timeout waiting for messages")
+            return
+        }
+    }
+    
+    done <- true
+}
+```
 
-Concurrency allows you to take advantage of modern hardware and parallelize tasks for improved performance.
+Key concepts demonstrated:
+1. **Buffered Channels**: Pre-allocated space for messages, non-blocking until full
+2. **Unbuffered Channels**: Synchronous communication, blocks until message is received
+3. **Select Statement**: Non-blocking operations on multiple channels
+4. **Timeout Pattern**: Using `time.After()` to prevent indefinite blocking
 
-**Example 3: Concurrent URL Fetching**
+#### Advanced Concurrency Patterns
+
+Let's explore a real-world example that combines multiple concurrency patterns for efficient and controlled parallel execution.
+
+**Example 4: Concurrent URL Fetcher with Rate Limiting**
 
 ```go[class="line-numbers"]
 package main
 
 import (
+    "context"
     "fmt"
     "net/http"
+    "sync"
     "time"
 )
 
-func fetchURL(url string, channel chan string) {
-    response, err := http.Get(url)
-    if err == nil {
-        channel <- fmt.Sprintf("Fetched %s: %d bytes", url, response.ContentLength)
-    } else {
-        channel <- fmt.Sprintf("Error fetching %s: %s", url, err)
+// Result structure to hold both data and error
+type Result struct {
+    URL      string
+    Response string
+    Error    error
+}
+
+func fetchURL(ctx context.Context, url string) Result {
+    // Create HTTP request with context
+    req, err := http.NewRequestWithContext(ctx, "GET", url, nil)
+    if err != nil {
+        return Result{URL: url, Error: err}
+    }
+
+    // Perform the request
+    resp, err := http.DefaultClient.Do(req)
+    if err != nil {
+        return Result{URL: url, Error: err}
+    }
+    defer resp.Body.Close()
+
+    return Result{
+        URL:      url,
+        Response: fmt.Sprintf("Fetched %s: %d bytes (Status: %s)", url, resp.ContentLength, resp.Status),
     }
 }
 
@@ -112,19 +207,66 @@ func main() {
         "https://www.goprogramminghub.com",
         "https://www.github.com",
         "https://www.google.com",
+        "https://www.golang.org",
+        "https://www.example.com",
     }
 
-    resultChannel := make(chan string)
+    // Create a buffered channel to limit concurrent requests
+    const maxConcurrent = 2
+    semaphore := make(chan struct{}, maxConcurrent)
+    results := make(chan Result, len(urls))
 
+    // Create a context with timeout
+    ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
+    defer cancel()
+
+    // WaitGroup to track completion
+    var wg sync.WaitGroup
+    wg.Add(len(urls))
+
+    fmt.Printf("Fetching %d URLs with max %d concurrent requests...\n", len(urls), maxConcurrent)
+
+    // Launch goroutines for each URL
     for _, url := range urls {
-        go fetchURL(url, resultChannel)
+        go func(url string) {
+            defer wg.Done()
+
+            // Acquire semaphore slot
+            semaphore <- struct{}{}
+            defer func() { <-semaphore }()
+
+            // Perform the fetch with context
+            result := fetchURL(ctx, url)
+            results <- result
+        }(url)
     }
 
-    for i := 0; i < len(urls); i++ {
-        fmt.Println(<-resultChannel)
+    // Close results channel when all fetches are done
+    go func() {
+        wg.Wait()
+        close(results)
+    }()
+
+    // Process results as they arrive
+    for result := range results {
+        if result.Error != nil {
+            fmt.Printf("Error: %s - %v\n", result.URL, result.Error)
+        } else {
+            fmt.Println(result.Response)
+        }
     }
 }
 ```
+
+This advanced example demonstrates several important concurrency patterns and best practices:
+
+1. **Rate Limiting**: Using a semaphore channel to limit concurrent requests
+2. **Context Usage**: Proper timeout handling with context
+3. **Structured Error Handling**: Using a Result struct to handle both success and failure cases
+4. **Resource Cleanup**: Proper closing of HTTP responses and channels
+5. **Graceful Shutdown**: Using WaitGroup to ensure all goroutines complete
+
+By mastering these patterns, you'll be equipped to build robust, efficient, and scalable concurrent applications in Go. Remember that concurrency is a powerful tool, but it should be used judiciously and with proper error handling and resource management.
 
 In this example, multiple URLs are fetched concurrently using goroutines. The fetched information or error messages are sent to the `resultChannel` and then printed sequentially as they are received.
 

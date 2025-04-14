@@ -9,6 +9,8 @@ export default function ImageBgCard({ title, bgImageUrl, content, height }) {
                 src={bgImageUrl}
                 height={height}
                 width="100%"
+                quality={90}
+                format="webp"
             />
             <div className="card-img-overlay">
                 <h5 className="card-title">{title}</h5>

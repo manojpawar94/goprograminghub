@@ -1,0 +1,63 @@
+.tabs-container {
+  max-width: 100%;
+  margin: 0 auto;
+  background-color: white;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.tabs-header {
+  display: flex;
+  background-color: #1e3a8a;
+  position: relative;
+}
+
+.tab-button {
+  flex: 1;
+  padding: 16px;
+  background: none;
+  border: none;
+  font-size: 16px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.7);
+  cursor: pointer;
+  transition: color 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.tab-button.active {
+  color: white;
+}
+
+.tab-button:hover {
+  color: white;
+}
+
+.tab-indicator {
+  height: 5px;
+  background-color: white;
+  position: absolute;
+  bottom: 0;
+  transition: all 0.3s ease;
+}
+
+.tab-content {
+  display: none;
+}
+
+.tab-content.active {
+  display: block;
+  animation: fadeIn 0.5s forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

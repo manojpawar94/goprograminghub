@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { List, ListItem, ListItemText, Typography, Box } from '@mui/material';
 
 export default function RelatedArticle({
   title = "Related Articles",
@@ -6,24 +7,54 @@ export default function RelatedArticle({
   moreLink,
 }) {
   return (
-    <>
-      <h4 className="text-center mt-2 mb-1 text-primary">{title}</h4>
-      <ul className="recent-article">
+    <Box sx={{ mb: 3, width: '100%', maxWidth: '100%', overflow: 'hidden' }}>
+      <Typography variant="h6" component="h4" sx={{ 
+        textAlign: 'center', 
+        mb: 1,
+        color: 'primary.main'
+      }}>
+        {title}
+      </Typography>
+      <List sx={{ p: 0, width: '100%', maxWidth: '100%', overflow: 'hidden' }}>
         {articles.slice(0, 25).map((article, index) => (
-          <li key={index}>
-            <Link href={article.permalink}>
-              <a className="text-decoration-none nav-link">{article.title}</a>
+          <ListItem 
+            key={index} 
+            sx={{ 
+              px: 0,
+              '&:hover': { backgroundColor: 'action.hover' }
+            }}
+          >
+            <Link href={article.permalink} passHref>
+              <ListItemText 
+                primary={article.title} 
+                sx={{ 
+                  '& .MuiListItemText-primary': {
+                    textDecoration: 'none',
+                    color: 'text.primary',
+                    '&:hover': { color: 'primary.main' }
+                  }
+                }}
+              />
             </Link>
-          </li>
+          </ListItem>
         ))}
         {moreLink && articles.length > 25 && (
-          <li key={"MoreLink"}>
-            <Link href={moreLink}>
-              <a className="text-decoration-none nav-link">More Articles... </a>
+          <ListItem key="MoreLink" sx={{ px: 0 }}>
+            <Link href={moreLink} passHref>
+              <ListItemText 
+                primary="More Articles..." 
+                sx={{ 
+                  '& .MuiListItemText-primary': {
+                    textDecoration: 'none',
+                    color: 'primary.main',
+                    '&:hover': { textDecoration: 'underline' }
+                  }
+                }}
+              />
             </Link>
-          </li>
+          </ListItem>
         )}
-      </ul>
-    </>
+      </List>
+    </Box>
   );
 }

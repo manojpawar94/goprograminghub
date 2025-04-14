@@ -1,52 +1,19 @@
 ---
-title: "Error Handling"
-excerpt: "Explore techniques for handling errors and exceptional scenarios in GoLang. Learn how to design robust code that gracefully manages unexpected situations."
+title: "Error Handling in Go"
+excerpt: "Master Go's error handling patterns with practical examples. Learn to write robust code that gracefully handles errors using built-in features and custom implementations."
 createdAt: "2021-05-03"
 author: manoj-pawar
 ---
 
-> Mastering Error Handling in Go Programming
+> Writing Robust Go Code with Effective Error Handling
 
-Welcome to Error Handling tutorial! In this chapter, we'll dive deep into the world of error handling in Go programming. Errors are like roadblocks on your coding journey, and knowing how to handle them gracefully is essential for creating robust and reliable software. By the end of this chapter, you'll not only understand the importance of error handling but also learn various techniques and best practices for managing exceptions and errors effectively.
+Welcome to our comprehensive guide on error handling in Go! Error handling is a critical aspect of writing reliable software, and Go's approach makes it both explicit and elegant. Let's explore how to handle errors effectively with practical examples and best practices.
 
-#### Embracing the Nature of Errors
+#### Understanding Go's Error Philosophy
 
-Imagine you're on a road trip, and encountering a detour is like encountering an error in programming. Errors are part of the journey, and handling them effectively is crucial for reaching your destination.
+Go treats errors as values, not exceptions. This approach encourages explicit error checking and handling, making code more reliable and easier to debug.
 
-**Example 1: Basic Error Handling**
-
-```go[class="line-numbers"]
-package main
-
-import (
-    "fmt"
-    "errors"
-)
-
-func divide(a, b float64) (float64, error) {
-    if b == 0 {
-        return 0, errors.New("cannot divide by zero")
-    }
-    return a / b, nil
-}
-
-func main() {
-    result, err := divide(10.0, 2.0)
-    if err != nil {
-        fmt.Println("Error:", err)
-    } else {
-        fmt.Println("Result:", result)
-    }
-}
-```
-
-In this example, the `divide` function returns an error when the divisor is zero. The error message is created using the `errors.New()` function. In the `main()` function, we check if `err` is not `nil`, indicating an error, and print the error message.
-
-#### Leveraging Custom Errors
-
-Custom errors provide more context and information about the error conditions.
-
-**Example 2: Custom Error Types**
+**Example 1: Basic Error Handling Pattern**
 
 ```go[class="line-numbers"]
 package main
@@ -56,62 +23,148 @@ import (
     "errors"
 )
 
-type DivideByZeroError struct {
-    message string
+// UserAge represents a person's age
+type UserAge struct {
+    age int
 }
 
-func (e *DivideByZeroError) Error() string {
-    return e.message
-}
-
-func divide(a, b float64) (float64, error) {
-    if b == 0 {
-        return 0, &DivideByZeroError{"cannot divide by zero"}
+// ValidateAge checks if the age is valid
+func ValidateAge(age int) (*UserAge, error) {
+    if age < 0 {
+        return nil, errors.New("age cannot be negative")
     }
-    return a / b, nil
+    if age > 150 {
+        return nil, errors.New("age exceeds maximum reasonable value")
+    }
+    return &UserAge{age: age}, nil
 }
 
 func main() {
-    result, err := divide(10.0, 0.0)
+    // Example with valid age
+    user1, err := ValidateAge(25)
     if err != nil {
         fmt.Println("Error:", err)
-    } else {
-        fmt.Println("Result:", result)
+        return
+    }
+    fmt.Printf("Valid age: %d\n", user1.age)
+
+    // Example with invalid age
+    user2, err := ValidateAge(-5)
+    if err != nil {
+        fmt.Println("Error:", err) // This will print the error
+        return
     }
 }
 ```
 
-In this example, a custom error type `DivideByZeroError` is defined with an `Error()` method that provides a custom error message. The `divide` function returns an instance of this error type when division by zero occurs.
+This example demonstrates:
+1. **Error as Return Value**: Functions return both a result and an error
+2. **Explicit Error Checking**: Using `if err != nil` pattern
+3. **Early Return**: Return immediately after encountering an error
+4. **Clear Error Messages**: Descriptive error messages help debugging
 
-#### Using Panic and Recover
+#### Custom Error Types
 
-In exceptional cases, you can use `panic` to stop the normal flow of execution and `recover` to regain control and handle the situation gracefully.
+Create custom error types to provide more context and enable specific error handling.
 
-**Example 3: Panic and Recover**
+**Example 2: Custom Error Implementation**
 
 ```go[class="line-numbers"]
 package main
 
 import "fmt"
 
-func exampleFunction() {
-    defer func() {
-        if r := recover(); r != nil {
-            fmt.Println("Recovered:", r)
-        }
-    }()
+// ValidationError represents a custom error type
+type ValidationError struct {
+    Field string
+    Issue string
+}
 
-    fmt.Println("Start of function")
-    panic("Something went wrong!")
-    fmt.Println("End of function") // This line won't be executed
+// Error implements the error interface
+func (v *ValidationError) Error() string {
+    return fmt.Sprintf("%s: %s", v.Field, v.Issue)
+}
+
+// ValidateUser checks user data
+func ValidateUser(username string, age int) error {
+    if username == "" {
+        return &ValidationError{"username", "cannot be empty"}
+    }
+    if age < 0 || age > 150 {
+        return &ValidationError{"age", "must be between 0 and 150"}
+    }
+    return nil
 }
 
 func main() {
-    exampleFunction()
-    fmt.Println("Program continues after panic")
+    // Test cases
+    tests := []struct {
+        username string
+        age      int
+    }{
+        {"", 25},        // Invalid username
+        {"john", -5},    // Invalid age
+        {"alice", 30},   // Valid input
+    }
+
+    for _, test := range tests {
+        if err := ValidateUser(test.username, test.age); err != nil {
+            // Type assertion to check if it's a ValidationError
+            if valErr, ok := err.(*ValidationError); ok {
+                fmt.Printf("Validation failed: %v\n", valErr)
+            } else {
+                fmt.Printf("Unknown error: %v\n", err)
+            }
+        } else {
+            fmt.Printf("Valid user: %s, age: %d\n", test.username, test.age)
+        }
+    }
 }
 ```
 
-In this example, the `exampleFunction` function uses `panic` to indicate something went wrong and then uses a deferred function with `recover` to catch the panic and print a message. The program continues executing after the panic is recovered.
+#### Error Wrapping and Unwrapping
 
-By mastering error handling techniques, you'll be able to design robust and reliable code that gracefully handles unexpected situations and provides meaningful feedback to users. Effective error handling is essential for building software that can handle various scenarios and provide a smooth user experience.
+Go 1.13 introduced error wrapping to add context while preserving the original error.
+
+**Example 3: Error Wrapping Pattern**
+
+```go[class="line-numbers"]
+package main
+
+import (
+    "fmt"
+    "errors"
+)
+
+// Database operations simulation
+func queryDatabase() error {
+    return errors.New("connection refused")
+}
+
+func getUser() error {
+    err := queryDatabase()
+    if err != nil {
+        return fmt.Errorf("failed to fetch user: %w", err)
+    }
+    return nil
+}
+
+func main() {
+    err := getUser()
+    if err != nil {
+        // Check if the error contains "connection refused"
+        if errors.Is(err, errors.New("connection refused")) {
+            fmt.Println("Database connection error detected")
+        }
+        fmt.Printf("Error: %v\n", err)
+    }
+}
+```
+
+Key concepts demonstrated:
+1. **Error Wrapping**: Using `%w` verb with `fmt.Errorf`
+2. **Error Unwrapping**: Using `errors.Is` to check specific errors
+3. **Error Chain**: Building a chain of related errors
+4. **Context Preservation**: Maintaining the original error while adding context
+
+By following these patterns and practices, you'll write more reliable and maintainable Go code that handles errors gracefully and provides clear feedback when things go wrong. Remember that good error handling is about making problems visible and actionable, not just catching them.

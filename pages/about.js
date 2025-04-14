@@ -1,10 +1,8 @@
 import Head from "next/head";
-import Image from "next/image";
+import { Grid, Typography, Box, Container, Paper } from "@mui/material";
 import ContactUsForm from "../components/ContactUsForm";
 import Navbar from "../components/Navbar";
 import SocialMedia from "../components/SocialMedia";
-
-import profilepic from "../public/images/manoj-pawar.jpg";
 import Footer from "../components/Footer";
 
 export default function About() {
@@ -15,58 +13,89 @@ export default function About() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Navbar />
-      <main className="container">
-        <div className="row mt-2">
-          <div className="col-md-4 text-center">
-            <Image
-              className="rounded-circle profile-img p-5"
-              alt="Manoj-Pawar-Profile"
-              src={profilepic}
-            />
-            <h3>Manoj Pawar</h3>
-            <hr />
-            <SocialMedia />
-          </div>
+      <Container maxWidth="lg">
+        <main>
+          <Grid container spacing={3} sx={{ my: 4 }}>
+            <Grid size={{ xs: 12, sm: 4 }}>
+              <Paper elevation={3} sx={{ p: 3, textAlign: "center" }}>
+                <Typography variant="h4" sx={{ mb: 2 }}>
+                  Manoj Pawar
+                </Typography>
+                <Typography
+                  variant="subtitle1"
+                  color="text.secondary"
+                  sx={{ mb: 2 }}
+                >
+                  Enthusiasts Software Engineer Architect
+                </Typography>
+                <SocialMedia />
+              </Paper>
+            </Grid>
 
-          <div className="col-md-8 pt-5">
-            <h1 className="ps-4">Greetings, Tech Enthusiast,</h1>
-            <h3 className="ps-4">
-              A warm and hearty thank you for gracing us with your presence at
-              GoProgrammingHub.com!
-            </h3>
-            <p className="ps-4 pt-3 text-justify">
-              I am a passionate software developer who thrives on innovation. My
-              professional journey showcases a diverse array of backend
-              technologies, including GoLang, Gin, Java, Spring Boot, JPA, and
-              Python. I'm equally skilled in frontend technologies, adeptly
-              navigating Angular, React, Bootstrap, Material Design Framework,
-              CSS3, and HTML5. My expertise extends to databases, encompassing
-              Oracle, MySQL, MongoDB, and Redis.
-            </p>
+            <Grid size={{ xs: 12, sm: 8 }}>
+              <Paper elevation={3} sx={{ p: 4 }}>
+                <Typography variant="h3" gutterBottom>
+                  Welcome to GoProgrammingHub
+                </Typography>
+                <Typography
+                  variant="h5"
+                  sx={{ mb: 3, color: "text.secondary" }}
+                >
+                  Empowering developers through comprehensive learning resources
+                  and practical insights
+                </Typography>
 
-            <p className="ps-4 text-justify">
-              At the core of GoProgrammingHub.com lies the art of sharing
-              knowledge and creating collective experiences. My motivation stems
-              from my love for technical and non-technical blogs, where I find
-              inspiration from experienced bloggers' compelling stories. This
-              inspiration has materialized into the creation of
-              GoProgrammingHub. As the platform embarks on its journey, focusing
-              on uncovering the intricacies of the Go programming language,
-              expect a trajectory that pushes boundaries.
-            </p>
+                <Typography variant="h6" sx={{ mt: 4, mb: 2 }}>
+                  Technical Expertise
+                </Typography>
+                <Typography
+                  variant="body1"
+                  sx={{ mb: 3, textAlign: "justify" }}
+                >
+                  With over a decade of experience in software development, I
+                  specialize in building scalable and efficient solutions across
+                  the full technology stack. My expertise spans:
+                </Typography>
+                <Box sx={{ pl: 2, mb: 3 }}>
+                  <Typography component="div">
+                    • Backend Development: GoLang, Java (Spring Boot, JPA),
+                    Python, Microservices Architecture
+                    <br />
+                    • Frontend Technologies: React, Angular, Material-UI,
+                    Bootstrap, Modern CSS
+                    <br />
+                    • Database Systems: Oracle, MySQL, MongoDB, Redis
+                    <br />• Big Data: HDFS, Apache Spark, Hive, Apache Kafka,
+                    Couchbase
+                    <br />• DevOps & Cloud: Docker, Kubernetes, AWS, CI/CD
+                    pipelines
+                  </Typography>
+                </Box>
 
-            <p className="ps-4 mt-2 text-justify">
-              I want to express my gratitude for your support of
-              GoProgrammingHub.com. I wish you a journey filled with
-              enlightening discoveries and transformative learning.
-            </p>
+                <Typography variant="h6" sx={{ mt: 4, mb: 2 }}>
+                  Vision & Mission
+                </Typography>
+                <Typography
+                  variant="body1"
+                  sx={{ mb: 3, textAlign: "justify" }}
+                >
+                  GoProgrammingHub was born from a passion for knowledge sharing
+                  and community building in the tech space. Our platform focuses
+                  on delivering high-quality, practical programming tutorials
+                  with a special emphasis on Go programming language and modern
+                  software development practices. We believe in creating content
+                  that bridges the gap between theory and real-world
+                  application.
+                </Typography>
 
-            <div className="mt-4">
-              <ContactUsForm />
-            </div>
-          </div>
-        </div>
-      </main>
+                <Box sx={{ mt: 4 }}>
+                  <ContactUsForm />
+                </Box>
+              </Paper>
+            </Grid>
+          </Grid>
+        </main>
+      </Container>
       <Footer />
     </>
   );

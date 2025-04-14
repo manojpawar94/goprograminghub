@@ -1,58 +1,58 @@
+import { Tooltip, IconButton } from '@mui/material';
+import {
+  LinkedIn as LinkedInIcon,
+  GitHub as GitHubIcon,
+  WhatsApp as WhatsAppIcon,
+  Facebook as FacebookIcon,
+  Email as EmailIcon,
+  Dashboard as DashboardIcon
+} from '@mui/icons-material';
+
 function SocialMedia() {
     const metadata = [
         {
-            src: "assets/images/media/linkedIn.png",
             name: "Linked In",
             link: "https://www.linkedin.com/in/manoj-pawar-172597b3/",
-            icon: "bi bi-linkedin",
+            icon: <LinkedInIcon />,
         },
         {
-            src: "assets/images/media/github.png",
             name: "GitHub",
             link: "https://github.com/manojpawar94",
-            icon: "bi bi-github",
+            icon: <GitHubIcon />,
         },
         {
-            src: "assets/images/media/whatsApp.png",
             name: "WhatsApp",
             link: "https://api.whatsapp.com/send?phone=918983120926&text=Hi%2C%20Manoj",
-            icon: "bi bi-whatsapp",
+            icon: <WhatsAppIcon />,
         },
         {
-            src: "assets/images/media/facebook.jpg",
             name: "Facebook",
             link: "https://www.facebook.com/manoj.pawar.5220/",
-            icon: "bi bi-facebook",
+            icon: <FacebookIcon />,
         },
         {
-            src: "assets/images/media/gmail.png",
             name: "Gmail",
             link: "mail:mmpawar94@gmail.com",
-            icon: "bi bi-envelope-fill",
+            icon: <EmailIcon />,
         },
         {
-            src: "assets/images/media/hackRank.png",
             name: "Hacker Rank",
             link: "https://www.hackerrank.com/mmpawar94",
-            icon: "bi bi-kanban",
+            icon: <DashboardIcon />,
         },
     ];
 
     const socialMediaLinks = metadata.map((socialMedia, index) => (
-        <a
-            href={socialMedia.link}
-            key={index.toString()}
-            target="_blank"
-            data-bs-toggle="tooltip"
-            data-bs-placement="bottom"
-            className="me-3 social-media-icon"
-        >
-            <em
-                className={socialMedia.icon}
-                role="img"
+        <Tooltip key={index.toString()} title={socialMedia.name} placement="bottom">
+            <IconButton
+                href={socialMedia.link}
+                target="_blank"
                 aria-label={socialMedia.name}
-            ></em>
-        </a>
+                sx={{ mx: 1 }}
+            >
+                {socialMedia.icon}
+            </IconButton>
+        </Tooltip>
     ));
 
     return <>{socialMediaLinks}</>;

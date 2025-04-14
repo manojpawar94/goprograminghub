@@ -1,4 +1,4 @@
-import Image from "next/image";
+import { Avatar, Typography, Box } from '@mui/material';
 
 export default function ArticleAuthor({ name, profilePictureUrl, date }) {
     const prettyDate = new Date(date).toLocaleString("en-US", {
@@ -8,18 +8,18 @@ export default function ArticleAuthor({ name, profilePictureUrl, date }) {
     });
 
     return (
-        <div className="author-container">
-            <Image
-                className="rounded-circle"
-                alt={name}
-                src={profilePictureUrl}
-                height="40"
-                width="40"
+        <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+            <Avatar 
+                alt={name} 
+                src={profilePictureUrl} 
+                sx={{ width: 40, height: 40 }}
             />
-            <div className="author">
-                <strong>{name}</strong>
-                <time dateTime={date}>{prettyDate}</time>
-            </div>
-        </div>
+            <Box>
+                <Typography variant="subtitle2" fontWeight="bold">{name}</Typography>
+                <Typography variant="caption" color="text.secondary">
+                    {prettyDate}
+                </Typography>
+            </Box>
+        </Box>
     );
 }

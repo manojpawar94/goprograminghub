@@ -1,11 +1,25 @@
-export default function SectionHeader({ title, margin, link }) {
-    return (
-        <div className="row mt-2 mb-2">
-            <a className="nav-link" href={link}>
-                <div className={`col-sm-12 ${margin}`}>
-                    <h3>{title}</h3>
-                </div>
-            </a>
-        </div>
-    );
+import { Grid, Link, Typography } from "@mui/material";
+
+export default function SectionHeader({ title, centered }) {
+  return (
+    <Grid container spacing={2} justifyContent={centered ? "center" : "flex-start"}>
+      <Grid xs={12}>
+        <Typography
+          variant="h2"
+          component="h3"
+          color="primary"
+          sx={{
+            fontWeight: "bold",
+            letterSpacing: "0.5px",
+            textAlign: centered ? "center" : "inherit",
+            "&:hover": {
+              color: "primary.dark",
+            },
+          }}
+        >
+          {title}
+        </Typography>
+      </Grid>
+    </Grid>
+  );
 }

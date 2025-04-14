@@ -1,5 +1,5 @@
 ---
-title: "Setting Up Scala Development Environment"
+title: "Scala Setup"
 excerpt: "In this section, we'll guide you through the process of setting up your Scala development environment. Before you start writing Scala code, you'll need to install Scala itself and a build tool called sbt (Scala Build Tool). Let's get started!"
 createdAt: "2021-05-03"
 author: "manoj-pawar"

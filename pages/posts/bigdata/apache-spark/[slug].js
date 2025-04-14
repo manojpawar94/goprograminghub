@@ -1,7 +1,4 @@
-import Navbar from "../../../../components/Navbar";
-import SectionHeader from "../../../../components/SectionHeader";
-import RelatedArticle from "../../../../components/RelatedArticle";
-
+import PostLayout from "../../../../components/PostLayout";
 import {
   getAllPosts,
   getAuthorBySlug,
@@ -9,36 +6,15 @@ import {
   getPostIndexBuSlug,
 } from "../../../../lib/api";
 
-import Footer from "../../../../components/Footer";
-import PostNav from "../../../../components/PostNav";
-import AppHead from "../../../../components/AppHead";
-
 export default function Post({ index, post, posts }) {
   return (
-    <>
-      <AppHead title={`Apache Spark`} />
-      <Navbar />
-      <main className="container mt-2">
-        <div className="row">
-          <div className="col-md-9">
-            <SectionHeader title={post.title} />
-            <PostNav index={index} posts={posts} />
-            <div
-              className="text-justify my-4"
-              dangerouslySetInnerHTML={{ __html: post.body }}
-            />
-            <PostNav index={index} posts={posts} />
-          </div>
-          <div className="col-md-3">
-            <RelatedArticle
-              articles={posts}
-              moreLink={`/posts/bigdata/apache-spark`}
-            />
-          </div>
-        </div>
-      </main>
-      <Footer />
-    </>
+    <PostLayout
+      title="Apache Spark"
+      post={post}
+      posts={posts}
+      index={index}
+      moreLink="/posts/bigdata/apache-spark"
+    />
   );
 }
 

@@ -6,41 +6,88 @@ createdAt: "2021-05-03"
 author: manoj-pawar
 ---
 
-Let's discuss the Go Program structure using the hello world program.
-Go program has the same structure as other programming languages,
+### Understanding Go Program Structure
 
--   define the package name
--   import require packages
--   define global variable/constant (optional)
--   define functions
+Every Go program follows a clear and consistent structure with these main components:
 
-#### Hello World Program
+1. **Package Declaration**: Every Go file starts with a package declaration
+2. **Import Statements**: Required packages are imported
+3. **Global Variables/Constants** (optional): Declarations accessible throughout the package
+4. **Functions**: Including the mandatory `main()` function for executable programs
 
-The `main()` function is the program execution entry point for the Go program.
+### Your First Go Program
 
-```go[class="line-numbers"]
+Let's write the classic "Hello, World!" program to understand these components:
+
+```go
+// File: main.go
 package main
+
 import "fmt"
-func main(){
-    fmt.Println("Hello, World")
+
+func main() {
+    fmt.Println("Hello, World!")
 }
 ```
 
-Let's create a new file, copy the below code snippet and save it as `main.go`.
+### Code Breakdown
 
--   The very first line of the program declares the main package. A package is a way to group functions. Unlike Java, a package name must define on the first line of the file. All the files in the same directory belong to the same package.
--   Followed by you need to import the required packages. Here, we have imported the popular `fmt` package, which contains functions for formatting text, including printing on the console. This package is one of the standard library packages you got when you installed Go.
--   Then you have implemented the `main()` function to print a message to the console. The `main()` function executes by default when you run the main package.
+1. **Package Declaration** (`package main`)
+   - Every Go file must start with a package declaration
+   - The `main` package is special - it tells Go this is an executable program
+   - All files in the same directory must belong to the same package
 
-**Note:**
+2. **Import Statement** (`import "fmt"`)
+   - Imports the formatting package from Go's standard library
+   - `fmt` provides functions for formatted I/O operations
+   - Go's standard library is rich with useful packages
 
--   In the Go program, we don't need to use enclosing semi-comma.
+3. **Main Function** (`func main()`)
+   - Entry point of the program
+   - Must be in the `main` package
+   - Takes no arguments and returns no values
+   - Program starts executing from here
 
-#### Execute Go Program
+### Key Go Syntax Features
 
-To execute the above code, you should run the command `go run main.go` on the terminal or CMD. It will run the `main()` function and print the below output on the console.
+1. **No Semicolons**
+   - Go automatically inserts semicolons at the end of statements
+   - Don't use semicolons in your code (except in `for` loops)
 
-```shell
-$ go run main.go
-Hello, World
-```
+2. **Code Formatting**
+   - Go enforces a standard code format
+   - Use `go fmt` to automatically format your code
+
+### Running Your Program
+
+1. **Save the Code**
+   - Create a new file named `main.go`
+   - Copy the code above into the file
+
+2. **Run the Program**
+   ```shell
+   # Run directly
+   $ go run main.go
+   Hello, World!
+
+   # Or build and run
+   $ go build main.go
+   $ ./main
+   Hello, World!
+   ```
+
+3. **Understanding Build Commands**
+   - `go run`: Compiles and runs in one step (good for development)
+   - `go build`: Creates an executable (good for deployment)
+
+### Common Beginner Tips
+
+1. **File Organization**
+   - Keep one package per directory
+   - Use meaningful file names
+   - Main package should be in the project root
+
+2. **Code Style**
+   - Use `go fmt` before committing code
+   - Follow Go's official style guide
+   - Keep functions small and focused
