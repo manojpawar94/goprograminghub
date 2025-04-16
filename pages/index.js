@@ -1,6 +1,6 @@
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
-import { getAllPosts, getAuthorBySlug } from "../lib/api";
+
 import AppHead from "../components/AppHead";
 import Image from "next/image";
 import ImageBgCard from "../components/ImageBgCard";
@@ -83,7 +83,7 @@ export default function Home() {
 
         <Grid container spacing={4} sx={{ mb: 6 }}>
           {tutorialSections.map((section, index) => (
-            <Grid size={{ xs: 12, sm: 6, md: 4 }} key={index}>
+            <Grid item xs={12} sm={6} md={4} key={index}> 
               <Paper
                 component="a"
                 href={section.path}
@@ -226,19 +226,4 @@ export default function Home() {
       <Footer />
     </>
   );
-}
-
-export function getStaticProps() {
-  return {
-    props: {
-      /* dsaPosts: getAllPosts("/_data-structures-and-algorithms").map((post) => ({
-        ...post,
-        author: getAuthorBySlug(post.author),
-      })),*/
-      problemSolvingPosts: getAllPosts("/_problemsolving").map((post) => ({
-        ...post,
-        author: getAuthorBySlug(post.author),
-      })),
-    },
-  };
 }
