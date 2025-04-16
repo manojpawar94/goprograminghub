@@ -13,6 +13,9 @@ const nextConfig = {
   pageExtensions: ["js", "jsx", "ts", "tsx", "mdx"],
   images: {
     unoptimized: true,
+    domains: [],
+    loader: 'custom',
+    loaderFile: './lib/image-loader.js',
   },
   experimental: {
     scrollRestoration: true,
